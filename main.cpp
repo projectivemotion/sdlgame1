@@ -44,9 +44,7 @@ SDL_Surface* loadSurface( std::string path, SDL_Surface* gScreenSurface)
         {
             printf( "Unable to optimize image %s! SDL Error: %s\n", path.c_str(), SDL_GetError() );
         }
-//Apply the image
-         SDL_BlitSurface( optimizedSurface, NULL, gScreenSurface, NULL );
-            
+        
         //Get rid of old loaded surface
         SDL_FreeSurface( loadedSurface );
     }
@@ -94,12 +92,27 @@ int main(int argc, char** argv) {
                 screenSurface = SDL_GetWindowSurface( window );
                 
                 SDL_Surface* loadSurfacev = loadSurface("./preview.png", screenSurface);
+
+
+            
+        SDL_Surface* gStretchedSurface =  NULL;
+        //Apply the image stretched
+	SDL_Rect stretchRect;
+	stretchRect.x = 0;
+	stretchRect.y = 0;
+	stretchRect.w = SCREEN_WIDTH;
+	stretchRect.h = SCREEN_HEIGHT;
+	SDL_BlitScaled( loadSurfacev, NULL, screenSurface, &stretchRect );                
                 
+//Apply the image
+//         SDL_BlitSurface( gStretchedSurface, NULL, screenSurface, NULL );
+         
                 //Update the surface
                 SDL_UpdateWindowSurface( window );
                 //Wait two seconds
 //                SDL_Delay( 20000 );
                 SDL_FreeSurface(loadSurfacev);
+                SDL_FreeSurface(gStretchedSurface);
                 SDL_FreeSurface(screenSurface);
             }
 
@@ -122,6 +135,7 @@ int main(int argc, char** argv) {
                     quit = true;
             }
         }
+        // paint and do other stuff
     }
     
 

@@ -62,6 +62,10 @@ int main(int argc, char** argv) {
     //The window we'll be rendering to
     SDL_Window* window = NULL;
     
+    bool quit = false;
+    
+    SDL_Event qev;
+    
     //The surface contained by the window
     SDL_Surface* screenSurface = NULL;
 
@@ -89,14 +93,13 @@ int main(int argc, char** argv) {
                 //Get window surface
                 screenSurface = SDL_GetWindowSurface( window );
                 
-                SDL_Surface* loadSurface = loadSurface("./preview.png", screenSurface);
+                SDL_Surface* loadSurfacev = loadSurface("./preview.png", screenSurface);
                 
                 //Update the surface
                 SDL_UpdateWindowSurface( window );
-
                 //Wait two seconds
-                SDL_Delay( 20000 );
-                SDL_FreeSurface(loadSurface);
+//                SDL_Delay( 20000 );
+                SDL_FreeSurface(loadSurfacev);
                 SDL_FreeSurface(screenSurface);
             }
 
@@ -105,6 +108,23 @@ int main(int argc, char** argv) {
             
         }
     }
+    
+    while( ! quit ){
+        while( SDL_PollEvent(&qev) != 0)
+        {
+            if (qev.type == SDL_QUIT)
+            {
+                quit = true;
+            }
+            if(qev.type == SDL_KEYUP)
+            {
+                if(qev.key.keysym.scancode == SDL_SCANCODE_Q)                    
+                    quit = true;
+            }
+        }
+    }
+    
+
     
         //Destroy window
     SDL_DestroyWindow( window );

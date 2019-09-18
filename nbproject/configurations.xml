@@ -4,6 +4,12 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>include/app/AppClass.h</itemPath>
+      <itemPath>src/scene/base/BaseScene.h</itemPath>
+      <itemPath>src/entities/player/bob.h</itemPath>
+      <itemPath>include/entities/entity.h</itemPath>
+      <itemPath>include/entities/projectiles.h</itemPath>
+      <itemPath>src/scene/proofofconcept/scene.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -12,7 +18,13 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>main.cpp</itemPath>
+      <itemPath>src/app/AppClass.cpp</itemPath>
+      <itemPath>src/scene/base/BaseScene.cpp</itemPath>
+      <itemPath>src/entities/player/bob.cpp</itemPath>
+      <itemPath>src/entities/entity.cpp</itemPath>
+      <itemPath>src/main.cpp</itemPath>
+      <itemPath>src/entities/projectiles.cpp</itemPath>
+      <itemPath>src/scene/proofofconcept/scene.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -35,6 +47,11 @@
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
       <compileType>
+        <ccTool>
+          <incDir>
+            <pElem>include/</pElem>
+          </incDir>
+        </ccTool>
         <linkerTool>
           <linkerLibItems>
             <linkerLibFileItem>/usr/lib/libSDL2.so</linkerLibFileItem>
@@ -42,7 +59,31 @@
           </linkerLibItems>
         </linkerTool>
       </compileType>
-      <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      <item path="include/app/AppClass.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/entities/entity.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/entities/projectiles.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/app/AppClass.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/entities/entity.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/entities/player/bob.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/entities/player/bob.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/entities/projectiles.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/scene/base/BaseScene.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/scene/base/BaseScene.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/scene/proofofconcept/scene.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/scene/proofofconcept/scene.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -54,9 +95,15 @@
       <compileType>
         <cTool>
           <developmentMode>5</developmentMode>
+          <incDir>
+            <pElem>include</pElem>
+          </incDir>
         </cTool>
         <ccTool>
           <developmentMode>5</developmentMode>
+          <incDir>
+            <pElem>include/</pElem>
+          </incDir>
         </ccTool>
         <fortranCompilerTool>
           <developmentMode>5</developmentMode>
@@ -70,7 +117,31 @@
           </linkerLibItems>
         </linkerTool>
       </compileType>
-      <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      <item path="include/app/AppClass.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/entities/entity.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/entities/projectiles.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/app/AppClass.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/entities/entity.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/entities/player/bob.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/entities/player/bob.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/entities/projectiles.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/scene/base/BaseScene.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/scene/base/BaseScene.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/scene/proofofconcept/scene.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/scene/proofofconcept/scene.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>

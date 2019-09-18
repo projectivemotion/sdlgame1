@@ -35,7 +35,13 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/main.o
+	${OBJECTDIR}/src/app/AppClass.o \
+	${OBJECTDIR}/src/entities/entity.o \
+	${OBJECTDIR}/src/entities/player/bob.o \
+	${OBJECTDIR}/src/entities/projectiles.o \
+	${OBJECTDIR}/src/main.o \
+	${OBJECTDIR}/src/scene/base/BaseScene.o \
+	${OBJECTDIR}/src/scene/proofofconcept/scene.o
 
 
 # C Compiler Flags
@@ -64,10 +70,40 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cppsdl1: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cppsdl1 ${OBJECTFILES} ${LDLIBSOPTIONS}
 
-${OBJECTDIR}/main.o: main.cpp
-	${MKDIR} -p ${OBJECTDIR}
+${OBJECTDIR}/src/app/AppClass.o: src/app/AppClass.cpp
+	${MKDIR} -p ${OBJECTDIR}/src/app
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
+	$(COMPILE.cc) -g -Iinclude/ -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/app/AppClass.o src/app/AppClass.cpp
+
+${OBJECTDIR}/src/entities/entity.o: src/entities/entity.cpp
+	${MKDIR} -p ${OBJECTDIR}/src/entities
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Iinclude/ -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/entities/entity.o src/entities/entity.cpp
+
+${OBJECTDIR}/src/entities/player/bob.o: src/entities/player/bob.cpp
+	${MKDIR} -p ${OBJECTDIR}/src/entities/player
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Iinclude/ -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/entities/player/bob.o src/entities/player/bob.cpp
+
+${OBJECTDIR}/src/entities/projectiles.o: src/entities/projectiles.cpp
+	${MKDIR} -p ${OBJECTDIR}/src/entities
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Iinclude/ -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/entities/projectiles.o src/entities/projectiles.cpp
+
+${OBJECTDIR}/src/main.o: src/main.cpp
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Iinclude/ -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/main.o src/main.cpp
+
+${OBJECTDIR}/src/scene/base/BaseScene.o: src/scene/base/BaseScene.cpp
+	${MKDIR} -p ${OBJECTDIR}/src/scene/base
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Iinclude/ -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/scene/base/BaseScene.o src/scene/base/BaseScene.cpp
+
+${OBJECTDIR}/src/scene/proofofconcept/scene.o: src/scene/proofofconcept/scene.cpp
+	${MKDIR} -p ${OBJECTDIR}/src/scene/proofofconcept
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Iinclude/ -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/scene/proofofconcept/scene.o src/scene/proofofconcept/scene.cpp
 
 # Subprojects
 .build-subprojects:

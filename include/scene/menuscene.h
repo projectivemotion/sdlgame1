@@ -15,7 +15,10 @@
 #define MENUSCENE_H
 
 #include "scene/BaseScene.h"
+#include "drawgroup.h"
 #include <SDL2/SDL_ttf.h>
+#include <memory>
+#include "FontSurface.h"
 
 class menuscene : public BaseScene {
     using BaseScene::BaseScene;
@@ -24,8 +27,9 @@ class menuscene : public BaseScene {
     virtual bool draw();
     virtual ~menuscene();
 private:
+    drawgroup group;
     SDL_Texture *sfbg;
-    TTF_Font *font;
+    std::unique_ptr<FontSurface> writer;
 };
 
 #endif /* MENUSCENE_H */

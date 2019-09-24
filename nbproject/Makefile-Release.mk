@@ -35,11 +35,18 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/include/drawgroup.o \
+	${OBJECTDIR}/src/FontSurface.o \
+	${OBJECTDIR}/src/SDLManager.o \
+	${OBJECTDIR}/src/SurfaceMaker.o \
 	${OBJECTDIR}/src/app/AppClass.o \
+	${OBJECTDIR}/src/drawable.o \
 	${OBJECTDIR}/src/entities/entity.o \
 	${OBJECTDIR}/src/entities/player/bob.o \
 	${OBJECTDIR}/src/entities/projectiles.o \
 	${OBJECTDIR}/src/main.o \
+	${OBJECTDIR}/src/menuoptions.o \
+	${OBJECTDIR}/src/painter.o \
 	${OBJECTDIR}/src/scene/base/BaseScene.o \
 	${OBJECTDIR}/src/scene/menuscene.o \
 	${OBJECTDIR}/src/scene/proofofconcept/scene.o
@@ -69,10 +76,35 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cppsdl1: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cppsdl1 ${OBJECTFILES} ${LDLIBSOPTIONS}
 
+${OBJECTDIR}/include/drawgroup.o: include/drawgroup.cpp
+	${MKDIR} -p ${OBJECTDIR}/include
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Iinclude/ `pkg-config --cflags SDL2_ttf` `pkg-config --cflags SDL2_image` `pkg-config --cflags sdl2`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/include/drawgroup.o include/drawgroup.cpp
+
+${OBJECTDIR}/src/FontSurface.o: src/FontSurface.cpp
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Iinclude/ `pkg-config --cflags SDL2_ttf` `pkg-config --cflags SDL2_image` `pkg-config --cflags sdl2`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/FontSurface.o src/FontSurface.cpp
+
+${OBJECTDIR}/src/SDLManager.o: src/SDLManager.cpp
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Iinclude/ `pkg-config --cflags SDL2_ttf` `pkg-config --cflags SDL2_image` `pkg-config --cflags sdl2`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/SDLManager.o src/SDLManager.cpp
+
+${OBJECTDIR}/src/SurfaceMaker.o: src/SurfaceMaker.cpp
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Iinclude/ `pkg-config --cflags SDL2_ttf` `pkg-config --cflags SDL2_image` `pkg-config --cflags sdl2`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/SurfaceMaker.o src/SurfaceMaker.cpp
+
 ${OBJECTDIR}/src/app/AppClass.o: src/app/AppClass.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/app
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -Iinclude/ `pkg-config --cflags SDL2_ttf` `pkg-config --cflags SDL2_image` `pkg-config --cflags sdl2`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/app/AppClass.o src/app/AppClass.cpp
+
+${OBJECTDIR}/src/drawable.o: src/drawable.cpp
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Iinclude/ `pkg-config --cflags SDL2_ttf` `pkg-config --cflags SDL2_image` `pkg-config --cflags sdl2`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/drawable.o src/drawable.cpp
 
 ${OBJECTDIR}/src/entities/entity.o: src/entities/entity.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/entities
@@ -93,6 +125,16 @@ ${OBJECTDIR}/src/main.o: src/main.cpp
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -Iinclude/ `pkg-config --cflags SDL2_ttf` `pkg-config --cflags SDL2_image` `pkg-config --cflags sdl2`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/main.o src/main.cpp
+
+${OBJECTDIR}/src/menuoptions.o: src/menuoptions.cpp
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Iinclude/ `pkg-config --cflags SDL2_ttf` `pkg-config --cflags SDL2_image` `pkg-config --cflags sdl2`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/menuoptions.o src/menuoptions.cpp
+
+${OBJECTDIR}/src/painter.o: src/painter.cpp
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Iinclude/ `pkg-config --cflags SDL2_ttf` `pkg-config --cflags SDL2_image` `pkg-config --cflags sdl2`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/painter.o src/painter.cpp
 
 ${OBJECTDIR}/src/scene/base/BaseScene.o: src/scene/base/BaseScene.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/scene/base

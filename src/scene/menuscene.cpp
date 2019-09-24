@@ -12,11 +12,16 @@
  */
 
 #include "scene/menuscene.h"
-#include "menuoptions.h"
 
 menuscene::~menuscene() {
 //    TTF_CloseFont(font);
 //    TTF_Quit();
+}
+
+bool menuscene::handle_mouse_motion(SDL_Event* e){
+    printf("mouse motion %d %d", e->motion.x, e->motion.y);
+    menu->handleMouseEv(e);
+    return true;    
 }
 
 
@@ -31,7 +36,8 @@ bool menuscene::draw(){
 
 bool menuscene::init() {
 //    tapp = &app;
-    group.add(std::make_shared<menuoptions>(app));
+    menu = std::make_shared<menuoptions>(app);
+    group.add(menu);
     sfbg = app->loadSurface("dots.png");
     return true;
 }

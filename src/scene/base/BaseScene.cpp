@@ -35,6 +35,9 @@ bool BaseScene::init(){
 bool BaseScene::handle_ev_scene(SDL_Event* e){
     return true;    
 }
+bool BaseScene::handle_mouse_motion(SDL_Event* e){
+    return true;    
+}
 
 bool BaseScene::loop(){ 
     SDL_Event e;
@@ -42,13 +45,17 @@ bool BaseScene::loop(){
     while(false == quitscene){
         while(!quitscene && SDL_PollEvent(&e) != 0)
         {
-            //User requests quit
-            if( e.type == SDL_QUIT )
-            {
-                app->quit = true;
-                quitscene = true;
-            }else
-                quitscene = false == handle_ev_scene(&e);
+            switch(e.type){
+                case SDL_QUIT:
+                    app->quit = true;
+                    quitscene = true;
+                    break;
+                case SDL_MOUSEMOTION:
+                    quitscene = false == handle_mouse_motion(&e);
+                    break;
+                default:
+                    quitscene = false == handle_ev_scene(&e);
+            }
         }
         draw();
     }

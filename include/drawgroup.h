@@ -23,7 +23,7 @@ class drawgroup {
 public:
     drawgroup();
     drawgroup(const drawgroup& orig);
-    virtual bool add(std::shared_ptr<drawable> ptr);
+    virtual drawable* add(std::shared_ptr<drawable> ptr);
     virtual bool draw(AppClass *app);
     virtual ~drawgroup();
 private:

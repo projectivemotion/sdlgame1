@@ -18,17 +18,21 @@
 #include "drawgroup.h"
 #include <SDL2/SDL_ttf.h>
 #include <memory>
+#include "menuoptions.h"
 #include "FontSurface.h"
 
 class menuscene : public BaseScene {
     using BaseScene::BaseScene;
+    virtual bool handle_mouse_motion(SDL_Event *e);
     
     virtual bool init();
     virtual bool draw();
     virtual ~menuscene();
+    
 private:
     drawgroup group;
     SDL_Texture *sfbg;
+    std::shared_ptr<menuoptions> menu;
     std::unique_ptr<FontSurface> writer;
 };
 

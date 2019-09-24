@@ -16,10 +16,10 @@
 drawgroup::drawgroup() {
 }
 
-bool drawgroup::add(std::shared_ptr<drawable> ptr){
+drawable* drawgroup::add(std::shared_ptr<drawable> ptr){
     ptr->init();
     drawables.push_back(ptr);
-    return true;
+    return ptr.get();
 }
 
 bool drawgroup::draw(AppClass* app) {

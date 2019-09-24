@@ -23,6 +23,7 @@ public:
     BaseScene(const BaseScene& orig);
     
     virtual bool init();
+    virtual bool handle_mouse_motion(SDL_Event *e);
     virtual bool handle_ev_scene(SDL_Event *e);
     virtual bool loop();
     virtual bool draw();

@@ -19,32 +19,31 @@
 #include <algorithm>
 
 struct opt {
-//public:
-//    opt(const char* pt, SDL_Color col, FontSurface fs){
-//        t = pt;
-//        ren = fs.render(pt, col);
-//    }
     const char* t;
     SDL_Surface* ren;
     SDL_Rect rec;
+    int state;
 };
 
 class menuoptions : public drawable {
 public:
     using drawable::drawable;
-//    menuoptions();
-//    menuoptions(const menuoptions& orig);
     
     virtual bool init();
     virtual SDL_Rect *getRect();
     virtual SDL_Texture *getTexture();
     
-    virtual SDL_Texture *buildTexture();
-    
-    virtual void addOption(const char *pt, const SDL_Color& color, int x, int y);
+    virtual bool handleMouseEv(SDL_Event *e);
     virtual ~menuoptions();
-private:
     
+protected:
+    
+    virtual SDL_Texture *buildTexture();    
+    virtual void addOption(const char *pt, const SDL_Color& color, int x, int y);
+    
+    
+private:
+    bool update;
     FontSurface letters;
     std::list<opt> opts;
     

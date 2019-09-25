@@ -44,6 +44,16 @@ bool menuoptions::init(){
     
     changed = true;
     selectedOpt = nullptr;
+    s1 = nullptr;   
+    
+    
+    s1 = Mix_LoadWAV( "assets/guncock.wav" );
+    if( s1 == nullptr )
+    {
+        printf( "Failed to load high sound effect! SDL_mixer Error: %s\n", Mix_GetError() );
+        return false;
+    }
+        
     
     return true;
 }
@@ -69,6 +79,10 @@ bool menuoptions::setChanged(bool nv){
     clean();
     handler();
     
+    if(selectedOpt != nullptr)
+    {
+        Mix_PlayChannel( -1, s1, 0 );
+    }
     
     return changed;
 }

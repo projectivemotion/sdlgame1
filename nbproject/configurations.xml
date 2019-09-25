@@ -5,9 +5,17 @@
                    displayName="Header Files"
                    projectFiles="true">
       <itemPath>include/app/AppClass.h</itemPath>
-      <itemPath>src/scene/base/BaseScene.h</itemPath>
+      <itemPath>include/scene/BaseScene.h</itemPath>
+      <itemPath>include/FontSurface.h</itemPath>
+      <itemPath>include/SDLManager.h</itemPath>
+      <itemPath>include/SurfaceMaker.h</itemPath>
       <itemPath>src/entities/player/bob.h</itemPath>
+      <itemPath>include/drawable.h</itemPath>
+      <itemPath>include/drawgroup.h</itemPath>
       <itemPath>include/entities/entity.h</itemPath>
+      <itemPath>include/menuoptions.h</itemPath>
+      <itemPath>include/scene/menuscene.h</itemPath>
+      <itemPath>include/painter.h</itemPath>
       <itemPath>include/entities/projectiles.h</itemPath>
       <itemPath>src/scene/proofofconcept/scene.h</itemPath>
     </logicalFolder>
@@ -20,9 +28,17 @@
                    projectFiles="true">
       <itemPath>src/app/AppClass.cpp</itemPath>
       <itemPath>src/scene/base/BaseScene.cpp</itemPath>
+      <itemPath>src/FontSurface.cpp</itemPath>
+      <itemPath>src/SDLManager.cpp</itemPath>
+      <itemPath>src/SurfaceMaker.cpp</itemPath>
       <itemPath>src/entities/player/bob.cpp</itemPath>
+      <itemPath>src/drawable.cpp</itemPath>
+      <itemPath>include/drawgroup.cpp</itemPath>
       <itemPath>src/entities/entity.cpp</itemPath>
       <itemPath>src/main.cpp</itemPath>
+      <itemPath>src/menuoptions.cpp</itemPath>
+      <itemPath>src/scene/menuscene.cpp</itemPath>
+      <itemPath>src/painter.cpp</itemPath>
       <itemPath>src/entities/projectiles.cpp</itemPath>
       <itemPath>src/scene/proofofconcept/scene.cpp</itemPath>
     </logicalFolder>
@@ -54,18 +70,48 @@
         </ccTool>
         <linkerTool>
           <linkerLibItems>
-            <linkerLibFileItem>/usr/lib/libSDL2.so</linkerLibFileItem>
-            <linkerLibLibItem>SDL2_image</linkerLibLibItem>
+            <linkerOptionItem>`pkg-config --libs SDL2_ttf`</linkerOptionItem>
+            <linkerOptionItem>`pkg-config --libs SDL2_image`</linkerOptionItem>
+            <linkerOptionItem>`pkg-config --libs sdl2`</linkerOptionItem>
+            <linkerOptionItem>`pkg-config --libs SDL2_mixer`</linkerOptionItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>
+      <item path="include/FontSurface.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/SDLManager.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/SurfaceMaker.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="include/app/AppClass.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/drawable.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/drawgroup.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="include/drawgroup.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/entities/entity.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/entities/projectiles.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="include/menuoptions.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/painter.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/scene/BaseScene.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/scene/menuscene.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/FontSurface.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/SDLManager.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/SurfaceMaker.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="src/app/AppClass.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/drawable.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/entities/entity.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -77,9 +123,13 @@
       </item>
       <item path="src/main.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="src/menuoptions.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/painter.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="src/scene/base/BaseScene.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="src/scene/base/BaseScene.h" ex="false" tool="3" flavor2="0">
+      <item path="src/scene/menuscene.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/scene/proofofconcept/scene.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -113,17 +163,48 @@
         </asmTool>
         <linkerTool>
           <linkerLibItems>
-            <linkerLibFileItem>/usr/lib/libSDL2.so</linkerLibFileItem>
+            <linkerOptionItem>`pkg-config --libs SDL2_ttf`</linkerOptionItem>
+            <linkerOptionItem>`pkg-config --libs SDL2_image`</linkerOptionItem>
+            <linkerOptionItem>`pkg-config --libs sdl2`</linkerOptionItem>
+            <linkerOptionItem>`pkg-config --libs SDL2_mixer`</linkerOptionItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>
+      <item path="include/FontSurface.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/SDLManager.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/SurfaceMaker.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="include/app/AppClass.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/drawable.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/drawgroup.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="include/drawgroup.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/entities/entity.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/entities/projectiles.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="include/menuoptions.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/painter.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/scene/BaseScene.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/scene/menuscene.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/FontSurface.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/SDLManager.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/SurfaceMaker.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="src/app/AppClass.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/drawable.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/entities/entity.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -135,9 +216,13 @@
       </item>
       <item path="src/main.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="src/menuoptions.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/painter.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="src/scene/base/BaseScene.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="src/scene/base/BaseScene.h" ex="false" tool="3" flavor2="0">
+      <item path="src/scene/menuscene.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/scene/proofofconcept/scene.cpp" ex="false" tool="1" flavor2="0">
       </item>

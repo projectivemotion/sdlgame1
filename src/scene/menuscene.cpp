@@ -13,6 +13,7 @@
 
 #include "scene/menuscene.h"
 
+
 menuscene::~menuscene() {
 //    TTF_CloseFont(font);
 //    TTF_Quit();
@@ -52,7 +53,12 @@ bool menuscene::init() {
         else
             printf("Selection: %s\n", sel->t);
     });
+    
+    
     group.add(menu);
+    
+    
     sfbg = app->loadSurface("dots.png");
+    
     return true;
 }

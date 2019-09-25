@@ -16,6 +16,7 @@
 
 #include "drawable.h"
 #include "FontSurface.h"
+#include <SDL2/SDL_mixer.h>
 #include <algorithm>
 #include <functional>
 
@@ -54,6 +55,13 @@ protected:
     
 private:
     std::function<void(void)> handler;
+    
+    
+    
+    
+    Mix_Chunk *s1;
+    
+    
     opt* selectedOpt;
     bool changed;
     FontSurface letters;

@@ -15,6 +15,9 @@
 #include "../scene/proofofconcept/scene.h"
 #include "scene/menuscene.h"
 
+#include <SDL2/SDL_mixer.h>
+
+
 AppClass::AppClass() {
     quit = false;
 }
@@ -83,6 +86,12 @@ bool AppClass::initWindow() {
             return false;
     }
     
+        //Initialize SDL_mixer
+   if( Mix_OpenAudio( 44100, MIX_DEFAULT_FORMAT, 2, 2048 ) < 0 )
+   {
+       printf( "SDL_mixer could not initialize! SDL_mixer Error: %s\n", Mix_GetError() );
+       return false;
+   }
     // extra ?
     
     //Initialize renderer color

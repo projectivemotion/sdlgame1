@@ -35,12 +35,20 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/include/drawgroup.o \
+	${OBJECTDIR}/src/FontSurface.o \
+	${OBJECTDIR}/src/SDLManager.o \
+	${OBJECTDIR}/src/SurfaceMaker.o \
 	${OBJECTDIR}/src/app/AppClass.o \
+	${OBJECTDIR}/src/drawable.o \
 	${OBJECTDIR}/src/entities/entity.o \
 	${OBJECTDIR}/src/entities/player/bob.o \
 	${OBJECTDIR}/src/entities/projectiles.o \
 	${OBJECTDIR}/src/main.o \
+	${OBJECTDIR}/src/menuoptions.o \
+	${OBJECTDIR}/src/painter.o \
 	${OBJECTDIR}/src/scene/base/BaseScene.o \
+	${OBJECTDIR}/src/scene/menuscene.o \
 	${OBJECTDIR}/src/scene/proofofconcept/scene.o
 
 
@@ -58,52 +66,90 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=/usr/lib/libSDL2.so -lSDL2_image
+LDLIBSOPTIONS=`pkg-config --libs SDL2_ttf` `pkg-config --libs SDL2_image` `pkg-config --libs sdl2` `pkg-config --libs SDL2_mixer`  
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
 	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cppsdl1
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cppsdl1: /usr/lib/libSDL2.so
-
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cppsdl1: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cppsdl1 ${OBJECTFILES} ${LDLIBSOPTIONS}
 
+${OBJECTDIR}/include/drawgroup.o: include/drawgroup.cpp
+	${MKDIR} -p ${OBJECTDIR}/include
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Iinclude/ `pkg-config --cflags SDL2_ttf` `pkg-config --cflags SDL2_image` `pkg-config --cflags sdl2` `pkg-config --cflags SDL2_mixer`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/include/drawgroup.o include/drawgroup.cpp
+
+${OBJECTDIR}/src/FontSurface.o: src/FontSurface.cpp
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Iinclude/ `pkg-config --cflags SDL2_ttf` `pkg-config --cflags SDL2_image` `pkg-config --cflags sdl2` `pkg-config --cflags SDL2_mixer`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/FontSurface.o src/FontSurface.cpp
+
+${OBJECTDIR}/src/SDLManager.o: src/SDLManager.cpp
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Iinclude/ `pkg-config --cflags SDL2_ttf` `pkg-config --cflags SDL2_image` `pkg-config --cflags sdl2` `pkg-config --cflags SDL2_mixer`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/SDLManager.o src/SDLManager.cpp
+
+${OBJECTDIR}/src/SurfaceMaker.o: src/SurfaceMaker.cpp
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Iinclude/ `pkg-config --cflags SDL2_ttf` `pkg-config --cflags SDL2_image` `pkg-config --cflags sdl2` `pkg-config --cflags SDL2_mixer`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/SurfaceMaker.o src/SurfaceMaker.cpp
+
 ${OBJECTDIR}/src/app/AppClass.o: src/app/AppClass.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/app
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Iinclude/ -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/app/AppClass.o src/app/AppClass.cpp
+	$(COMPILE.cc) -g -Iinclude/ `pkg-config --cflags SDL2_ttf` `pkg-config --cflags SDL2_image` `pkg-config --cflags sdl2` `pkg-config --cflags SDL2_mixer`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/app/AppClass.o src/app/AppClass.cpp
+
+${OBJECTDIR}/src/drawable.o: src/drawable.cpp
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Iinclude/ `pkg-config --cflags SDL2_ttf` `pkg-config --cflags SDL2_image` `pkg-config --cflags sdl2` `pkg-config --cflags SDL2_mixer`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/drawable.o src/drawable.cpp
 
 ${OBJECTDIR}/src/entities/entity.o: src/entities/entity.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/entities
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Iinclude/ -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/entities/entity.o src/entities/entity.cpp
+	$(COMPILE.cc) -g -Iinclude/ `pkg-config --cflags SDL2_ttf` `pkg-config --cflags SDL2_image` `pkg-config --cflags sdl2` `pkg-config --cflags SDL2_mixer`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/entities/entity.o src/entities/entity.cpp
 
 ${OBJECTDIR}/src/entities/player/bob.o: src/entities/player/bob.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/entities/player
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Iinclude/ -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/entities/player/bob.o src/entities/player/bob.cpp
+	$(COMPILE.cc) -g -Iinclude/ `pkg-config --cflags SDL2_ttf` `pkg-config --cflags SDL2_image` `pkg-config --cflags sdl2` `pkg-config --cflags SDL2_mixer`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/entities/player/bob.o src/entities/player/bob.cpp
 
 ${OBJECTDIR}/src/entities/projectiles.o: src/entities/projectiles.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/entities
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Iinclude/ -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/entities/projectiles.o src/entities/projectiles.cpp
+	$(COMPILE.cc) -g -Iinclude/ `pkg-config --cflags SDL2_ttf` `pkg-config --cflags SDL2_image` `pkg-config --cflags sdl2` `pkg-config --cflags SDL2_mixer`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/entities/projectiles.o src/entities/projectiles.cpp
 
 ${OBJECTDIR}/src/main.o: src/main.cpp
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Iinclude/ -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/main.o src/main.cpp
+	$(COMPILE.cc) -g -Iinclude/ `pkg-config --cflags SDL2_ttf` `pkg-config --cflags SDL2_image` `pkg-config --cflags sdl2` `pkg-config --cflags SDL2_mixer`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/main.o src/main.cpp
+
+${OBJECTDIR}/src/menuoptions.o: src/menuoptions.cpp
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Iinclude/ `pkg-config --cflags SDL2_ttf` `pkg-config --cflags SDL2_image` `pkg-config --cflags sdl2` `pkg-config --cflags SDL2_mixer`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/menuoptions.o src/menuoptions.cpp
+
+${OBJECTDIR}/src/painter.o: src/painter.cpp
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Iinclude/ `pkg-config --cflags SDL2_ttf` `pkg-config --cflags SDL2_image` `pkg-config --cflags sdl2` `pkg-config --cflags SDL2_mixer`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/painter.o src/painter.cpp
 
 ${OBJECTDIR}/src/scene/base/BaseScene.o: src/scene/base/BaseScene.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/scene/base
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Iinclude/ -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/scene/base/BaseScene.o src/scene/base/BaseScene.cpp
+	$(COMPILE.cc) -g -Iinclude/ `pkg-config --cflags SDL2_ttf` `pkg-config --cflags SDL2_image` `pkg-config --cflags sdl2` `pkg-config --cflags SDL2_mixer`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/scene/base/BaseScene.o src/scene/base/BaseScene.cpp
+
+${OBJECTDIR}/src/scene/menuscene.o: src/scene/menuscene.cpp
+	${MKDIR} -p ${OBJECTDIR}/src/scene
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Iinclude/ `pkg-config --cflags SDL2_ttf` `pkg-config --cflags SDL2_image` `pkg-config --cflags sdl2` `pkg-config --cflags SDL2_mixer`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/scene/menuscene.o src/scene/menuscene.cpp
 
 ${OBJECTDIR}/src/scene/proofofconcept/scene.o: src/scene/proofofconcept/scene.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/scene/proofofconcept
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Iinclude/ -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/scene/proofofconcept/scene.o src/scene/proofofconcept/scene.cpp
+	$(COMPILE.cc) -g -Iinclude/ `pkg-config --cflags SDL2_ttf` `pkg-config --cflags SDL2_image` `pkg-config --cflags sdl2` `pkg-config --cflags SDL2_mixer`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/scene/proofofconcept/scene.o src/scene/proofofconcept/scene.cpp
 
 # Subprojects
 .build-subprojects:
@@ -111,8 +157,6 @@ ${OBJECTDIR}/src/scene/proofofconcept/scene.o: src/scene/proofofconcept/scene.cp
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} -r ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libSDL2.so
-	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cppsdl1
 
 # Subprojects
 .clean-subprojects:

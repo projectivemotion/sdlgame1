@@ -32,14 +32,14 @@ public:
         return texture;
     }
     
-    SDL_Rect* getRect(){
+    virtual SDL_Rect* getRect(){
         return &rect;
     }
     
     virtual ~DrawableTexture(){
         SDL_DestroyTexture(texture);
     }
-private:
+protected:
     SDL_Rect rect;
     SDL_Texture* texture;
 };

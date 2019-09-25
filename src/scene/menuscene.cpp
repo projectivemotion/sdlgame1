@@ -28,7 +28,7 @@ bool menuscene::handle_ev_mousedown(SDL_Event* e){
         
         
     if(sel != nullptr){
-        app->getSceneManager()->gotoScene(SCENE_BACKGROUND);
+        app->getSceneManager()->gotoScene(sel->sceneidv);
     //    menu->handleMouseEv(e);
         return false;    
     }

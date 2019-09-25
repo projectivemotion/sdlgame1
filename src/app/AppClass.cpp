@@ -69,7 +69,8 @@ bool AppClass::initWindow() {
     }
 
     //Create vsynced renderer for window
-    ren = SDL_CreateRenderer( win, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC );
+//    ren = SDL_CreateRenderer( win, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC );
+    ren = SDL_CreateRenderer( win, -1, SDL_RENDERER_ACCELERATED );
 			//try software render if hardware fails
     if( ren == NULL )
     {

@@ -12,7 +12,7 @@
  */
 
 #include "scene/BackgroundScene.h"
-#include "../DrawableTexture.h"
+#include "DrawableTexture.h"
 #include "app/AppClass.h"
 
 

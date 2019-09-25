@@ -29,11 +29,12 @@ void menuoptions::initOptions(){
         int iheight = 50;
         int width = 200; 
 
-        opts.push_front({pt, letters->render(pt, col), {x,y,width,iheight}, scenev});
+        opt mopt = {pt, letters->render(pt, col), {x,y,width,iheight}, 0, scenev};
+        opts.push_front(mopt);
     };
     
-    add(SCENE_BACKGROUND, "Scene 1", {0,0,255,128}, 100,100);
-    add(SCENE_BACKGROUND, "Scene 2", {255, 255, 255, 255}, 100, 200);
+    add(SCENE_BACKGROUND, "4 Balls", {0,0,255,128}, 100,100);
+    add(SCENE_5BALLS, "5 Balls", {255, 255, 255, 255}, 100, 200);
     add(SCENE_BACKGROUND, "Scene 3", {255, 0, 255, 255}, 100, 300);
 }
     
@@ -47,18 +48,10 @@ bool menuoptions::init(){
     rect.y = 0;
     
     changed = true;
+    initOptions();
     
     sound = app->getAssetManager().getSound("assets/guncock.wav");
-    
-//    s1 = Mix_LoadWAV( "assets/guncock.wav" );
-//    if( s1 == nullptr )
-//    {
-//        printf( "Failed to load high sound effect! SDL_mixer Error: %s\n", Mix_GetError() );
-//        return false;
-//    }
         
-    
-    initOptions();
     
     return true;
 }
@@ -140,9 +133,6 @@ void menuoptions::clean(){
 
 SDL_Texture *menuoptions::buildTexture(){
     
-    // render opts
-//    clean();
-    
     SDL_Texture *mTexture = nullptr;
     SDL_Surface *surface = nullptr;
     
@@ -183,6 +173,7 @@ SDL_Rect *menuoptions::getRect(){
 
 
 menuoptions::~menuoptions() {
+    clean();
     // @todo clear opt surfaces
 }
 

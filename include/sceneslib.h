@@ -18,6 +18,7 @@
 enum sceneid {
     SCENE_MENU,
     SCENE_BACKGROUND,
+    SCENE_5BALLS,
     SCENE_TOTAL
 };
 

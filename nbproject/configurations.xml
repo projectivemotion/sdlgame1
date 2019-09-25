@@ -7,9 +7,11 @@
       <itemPath>include/app/AppClass.h</itemPath>
       <itemPath>include/AssetManager.h</itemPath>
       <itemPath>include/scene/BackgroundScene.h</itemPath>
+      <itemPath>include/BallScene.h</itemPath>
       <itemPath>include/BaseScene.h</itemPath>
+      <itemPath>include/BounceBall.h</itemPath>
       <itemPath>include/ChunkSound.h</itemPath>
-      <itemPath>src/DrawableTexture.h</itemPath>
+      <itemPath>include/DrawableTexture.h</itemPath>
       <itemPath>include/FontSurface.h</itemPath>
       <itemPath>include/ManagedScene.h</itemPath>
       <itemPath>include/SceneManager.h</itemPath>
@@ -35,7 +37,9 @@
       <itemPath>src/app/AppClass.cpp</itemPath>
       <itemPath>src/AssetManager.cpp</itemPath>
       <itemPath>src/scene/BackgroundScene.cpp</itemPath>
+      <itemPath>src/scene/BallScene.cpp</itemPath>
       <itemPath>src/BaseScene.cpp</itemPath>
+      <itemPath>src/BounceBall.cpp</itemPath>
       <itemPath>src/ChunkSound.cpp</itemPath>
       <itemPath>src/DrawableTexture.cpp</itemPath>
       <itemPath>src/FontSurface.cpp</itemPath>
@@ -90,9 +94,15 @@
       </compileType>
       <item path="include/AssetManager.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="include/BallScene.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="include/BaseScene.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="include/BounceBall.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="include/ChunkSound.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/DrawableTexture.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/FontSurface.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -128,11 +138,11 @@
       </item>
       <item path="src/BaseScene.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="src/BounceBall.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="src/ChunkSound.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/DrawableTexture.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/DrawableTexture.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/FontSurface.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -161,6 +171,8 @@
       <item path="src/painter.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/scene/BackgroundScene.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/scene/BallScene.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/scene/menuscene.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -205,9 +217,15 @@
       </compileType>
       <item path="include/AssetManager.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="include/BallScene.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="include/BaseScene.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="include/BounceBall.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="include/ChunkSound.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/DrawableTexture.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/FontSurface.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -243,11 +261,11 @@
       </item>
       <item path="src/BaseScene.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="src/BounceBall.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="src/ChunkSound.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/DrawableTexture.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/DrawableTexture.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/FontSurface.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -276,6 +294,8 @@
       <item path="src/painter.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/scene/BackgroundScene.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/scene/BallScene.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/scene/menuscene.cpp" ex="false" tool="1" flavor2="0">
       </item>

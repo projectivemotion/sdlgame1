@@ -25,6 +25,7 @@ public:
     virtual bool draw();
     virtual SDL_Texture *getTexture();
     virtual SDL_Rect *getRect();
+    virtual SDL_Rect *clipRect();
     
     virtual bool init() = 0;
     virtual ~drawable();

@@ -38,6 +38,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/include/drawgroup.o \
 	${OBJECTDIR}/src/AssetManager.o \
 	${OBJECTDIR}/src/BaseScene.o \
+	${OBJECTDIR}/src/BounceBall.o \
 	${OBJECTDIR}/src/ChunkSound.o \
 	${OBJECTDIR}/src/DrawableTexture.o \
 	${OBJECTDIR}/src/FontSurface.o \
@@ -53,6 +54,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/menuoptions.o \
 	${OBJECTDIR}/src/painter.o \
 	${OBJECTDIR}/src/scene/BackgroundScene.o \
+	${OBJECTDIR}/src/scene/BallScene.o \
 	${OBJECTDIR}/src/scene/menuscene.o \
 	${OBJECTDIR}/src/scene/proofofconcept/scene.o
 
@@ -95,6 +97,11 @@ ${OBJECTDIR}/src/BaseScene.o: src/BaseScene.cpp
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -Iinclude/ `pkg-config --cflags SDL2_ttf` `pkg-config --cflags SDL2_image` `pkg-config --cflags sdl2` `pkg-config --cflags SDL2_mixer`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/BaseScene.o src/BaseScene.cpp
+
+${OBJECTDIR}/src/BounceBall.o: src/BounceBall.cpp
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Iinclude/ `pkg-config --cflags SDL2_ttf` `pkg-config --cflags SDL2_image` `pkg-config --cflags sdl2` `pkg-config --cflags SDL2_mixer`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/BounceBall.o src/BounceBall.cpp
 
 ${OBJECTDIR}/src/ChunkSound.o: src/ChunkSound.cpp
 	${MKDIR} -p ${OBJECTDIR}/src
@@ -170,6 +177,11 @@ ${OBJECTDIR}/src/scene/BackgroundScene.o: src/scene/BackgroundScene.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/scene
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -Iinclude/ `pkg-config --cflags SDL2_ttf` `pkg-config --cflags SDL2_image` `pkg-config --cflags sdl2` `pkg-config --cflags SDL2_mixer`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/scene/BackgroundScene.o src/scene/BackgroundScene.cpp
+
+${OBJECTDIR}/src/scene/BallScene.o: src/scene/BallScene.cpp
+	${MKDIR} -p ${OBJECTDIR}/src/scene
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Iinclude/ `pkg-config --cflags SDL2_ttf` `pkg-config --cflags SDL2_image` `pkg-config --cflags sdl2` `pkg-config --cflags SDL2_mixer`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/scene/BallScene.o src/scene/BallScene.cpp
 
 ${OBJECTDIR}/src/scene/menuscene.o: src/scene/menuscene.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/scene

@@ -25,7 +25,7 @@ struct opt {
     SDL_Surface* ren;
     SDL_Rect rec;
     int state;
-    sceneid sceneidv;
+    enum sceneid sceneidv;
 };
 
 class menuoptions : public drawable {

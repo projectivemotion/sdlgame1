@@ -19,6 +19,7 @@ AssetManager::AssetManager() {
 std::shared_ptr<FontSurface> AssetManager::getFont(const char* path, int size) {
     return std::make_shared<FontSurface>(path, size);
 }
+
 std::shared_ptr<ChunkSound> AssetManager::getSound(const char* path) {
     return std::make_shared<ChunkSound>(path);
 }

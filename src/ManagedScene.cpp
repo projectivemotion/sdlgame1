@@ -19,6 +19,7 @@ bool ManagedScene::draw() {
     group.draw(app);
     SDL_RenderPresent( app->ren );
     
+//    SDL_Delay(400);
     return true;
 }
 

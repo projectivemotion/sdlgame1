@@ -25,8 +25,12 @@ SDL_Rect *drawable::getRect() {
     return nullptr;
 }
 
+SDL_Rect *drawable::clipRect() {
+    return nullptr;
+}
+
 bool drawable::draw(){
-    SDL_RenderCopy(app->ren, getTexture(), nullptr, getRect());
+    SDL_RenderCopy(app->ren, getTexture(), clipRect(), getRect());
     return true;
 }
 

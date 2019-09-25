@@ -18,8 +18,10 @@
 #include <SDL2/SDL_image.h>
 #include "entities/entity.h"
 #include "SceneManager.h"
+#include "AssetManager.h"
 
 class BaseScene;
+//class AssetManager;
 //class SceneManager;
 
 class AppClass {
@@ -27,6 +29,7 @@ public:
     AppClass();
     AppClass(const AppClass& orig);
     
+    AssetManager& getAssetManager();
     SceneManager* getSceneManager();
     SDL_Texture* loadSurface(const char* path);
     entity* createEntity(const char* path);
@@ -62,6 +65,7 @@ protected:
     
 private:
     SceneManager scenes;
+    AssetManager assets;
     //Screen dimension constants
     const int SCREEN_WIDTH = 640;
     const int SCREEN_HEIGHT = 480;

@@ -15,6 +15,10 @@
 
 #include "FontSurface.h"
 
+FontSurface::FontSurface(const char* fontpath, int sz) {
+    init(fontpath, sz);
+}
+
 void FontSurface::init(const char* fontpath, int sz) {
     if(TTF_Init()==-1) {
     printf("TTF_Init: %s\n", TTF_GetError());

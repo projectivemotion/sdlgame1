@@ -15,17 +15,26 @@
 #define SDLMANAGER_H
 
 #include <SDL2/SDL.h>
+#include "FontSurface.h"
+#include "ChunkSound.h"
 #include <set>
+#include <memory>
 
-class SDLManager {
+
+class AssetManager {
 public:
-    SDLManager();
+    AssetManager();
+    AssetManager(const AssetManager& orig);
+    
     SDL_Surface *open(SDL_Surface *sf);
     
-    SDLManager(const SDLManager& orig);
-    virtual ~SDLManager();
+    std::shared_ptr<FontSurface> getFont(const char*path, int size);
+    std::shared_ptr<ChunkSound> getSound(const char*path);
+    
+    virtual ~AssetManager();
 private:
     std::set<void*> ptr;
+    
 };
 
 #endif /* SDLMANAGER_H */

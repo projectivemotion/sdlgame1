@@ -14,6 +14,7 @@
 #include "app/AppClass.h"
 #include "../scene/proofofconcept/scene.h"
 #include "scene/menuscene.h"
+#include "AssetManager.h"
 
 #include <SDL2/SDL_mixer.h>
 
@@ -120,6 +121,10 @@ bool AppClass::loadScenes() {
 SDL_Rect AppClass::getRect(){
     SDL_Rect r = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
     return r;
+}
+
+AssetManager& AppClass::getAssetManager(){    
+    return assets;
 }
 
 SceneManager* AppClass::getSceneManager(){    

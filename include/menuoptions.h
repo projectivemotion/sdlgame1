@@ -51,21 +51,17 @@ protected:
     bool setChanged(bool nv);
     
     virtual SDL_Texture *buildTexture();    
-    virtual void addOption(sceneid scenev, const char *pt, const SDL_Color& color, int x, int y);
+    virtual void initOptions();
+//    virtual void addOption(sceneid scenev, const char *pt, const SDL_Color& color, int x, int y);
     
     
 private:
 //    std::function<void(void)> handler;
-    
-    
-    
-    
-    Mix_Chunk *s1;
-    
+
+    std::shared_ptr<ChunkSound> sound;
     
     opt* selectedOpt;
     bool changed;
-    FontSurface letters;
     std::list<opt> opts;
     
     SDL_Rect rect;

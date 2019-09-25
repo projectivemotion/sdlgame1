@@ -21,6 +21,8 @@
 class FontSurface : public SurfaceMaker {
 public:
     FontSurface();
+    FontSurface(const char* fontpath, int sz);
+    
     void init(const char* fontpath, int sz);
     FontSurface(const FontSurface& orig);
     

@@ -5,12 +5,13 @@
                    displayName="Header Files"
                    projectFiles="true">
       <itemPath>include/app/AppClass.h</itemPath>
+      <itemPath>include/AssetManager.h</itemPath>
       <itemPath>include/scene/BackgroundScene.h</itemPath>
       <itemPath>include/BaseScene.h</itemPath>
+      <itemPath>include/ChunkSound.h</itemPath>
       <itemPath>src/DrawableTexture.h</itemPath>
       <itemPath>include/FontSurface.h</itemPath>
       <itemPath>include/ManagedScene.h</itemPath>
-      <itemPath>include/SDLManager.h</itemPath>
       <itemPath>include/SceneManager.h</itemPath>
       <itemPath>include/SurfaceMaker.h</itemPath>
       <itemPath>src/entities/player/bob.h</itemPath>
@@ -32,12 +33,13 @@
                    displayName="Source Files"
                    projectFiles="true">
       <itemPath>src/app/AppClass.cpp</itemPath>
-      <itemPath>src/BackgroundScene.cpp</itemPath>
+      <itemPath>src/AssetManager.cpp</itemPath>
+      <itemPath>src/scene/BackgroundScene.cpp</itemPath>
       <itemPath>src/BaseScene.cpp</itemPath>
+      <itemPath>src/ChunkSound.cpp</itemPath>
       <itemPath>src/DrawableTexture.cpp</itemPath>
       <itemPath>src/FontSurface.cpp</itemPath>
       <itemPath>src/ManagedScene.cpp</itemPath>
-      <itemPath>src/SDLManager.cpp</itemPath>
       <itemPath>src/SceneManager.cpp</itemPath>
       <itemPath>src/SurfaceMaker.cpp</itemPath>
       <itemPath>src/entities/player/bob.cpp</itemPath>
@@ -86,13 +88,15 @@
           </linkerLibItems>
         </linkerTool>
       </compileType>
+      <item path="include/AssetManager.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="include/BaseScene.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/ChunkSound.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/FontSurface.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/ManagedScene.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="include/SDLManager.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/SceneManager.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -120,9 +124,11 @@
       </item>
       <item path="include/sceneslib.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="src/BackgroundScene.cpp" ex="false" tool="1" flavor2="0">
+      <item path="src/AssetManager.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/BaseScene.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/ChunkSound.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/DrawableTexture.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -131,8 +137,6 @@
       <item path="src/FontSurface.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/ManagedScene.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/SDLManager.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/SceneManager.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -155,6 +159,8 @@
       <item path="src/menuoptions.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/painter.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/scene/BackgroundScene.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/scene/menuscene.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -197,13 +203,15 @@
           </linkerLibItems>
         </linkerTool>
       </compileType>
+      <item path="include/AssetManager.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="include/BaseScene.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/ChunkSound.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/FontSurface.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/ManagedScene.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="include/SDLManager.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/SceneManager.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -231,9 +239,11 @@
       </item>
       <item path="include/sceneslib.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="src/BackgroundScene.cpp" ex="false" tool="1" flavor2="0">
+      <item path="src/AssetManager.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/BaseScene.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/ChunkSound.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/DrawableTexture.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -242,8 +252,6 @@
       <item path="src/FontSurface.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/ManagedScene.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/SDLManager.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/SceneManager.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -266,6 +274,8 @@
       <item path="src/menuoptions.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/painter.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/scene/BackgroundScene.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/scene/menuscene.cpp" ex="false" tool="1" flavor2="0">
       </item>

@@ -21,39 +21,44 @@
 //    TOPTS
 //} opts;
 
-void menuoptions::addOption(sceneid scenev, const char *pt, const SDL_Color& col, int x, int y){    
-    int iheight = 50;
-    int width = 200; 
-        
-    opts.push_front({pt, letters.render(pt, col), {x,y,width,iheight}, scenev});
+//void menuoptions::addOption(sceneid scenev, const char *pt, const SDL_Color& col, int x, int y){    
+void menuoptions::initOptions(){
+    
+    auto letters = app->getAssetManager().getFont("assets/unispace.ttf", 33);
+    auto add = [this, letters](sceneid scenev, const char *pt, const SDL_Color& col, int x, int y){    
+        int iheight = 50;
+        int width = 200; 
+
+        opts.push_front({pt, letters->render(pt, col), {x,y,width,iheight}, scenev});
+    };
+    
+    add(SCENE_BACKGROUND, "Scene 1", {0,0,255,128}, 100,100);
+    add(SCENE_BACKGROUND, "Scene 2", {255, 255, 255, 255}, 100, 200);
+    add(SCENE_BACKGROUND, "Scene 3", {255, 0, 255, 255}, 100, 300);
 }
     
 bool menuoptions::init(){
+    selectedOpt = nullptr;
     textx = nullptr;
     
-    letters.init("assets/unispace.ttf", 33);
-    
-    addOption(SCENE_BACKGROUND, "Scene 1", {0,0,255,128}, 100,100);
-    addOption(SCENE_BACKGROUND, "Scene 2", {255, 255, 255, 255}, 100, 200);
-    addOption(SCENE_BACKGROUND, "Scene 3", {255, 0, 255, 255}, 100, 300);
-
     rect.w = 640;
     rect.h = 480;
     rect.x = 0;
     rect.y = 0;
     
     changed = true;
-    selectedOpt = nullptr;
-    s1 = nullptr;   
     
+    sound = app->getAssetManager().getSound("assets/guncock.wav");
     
-    s1 = Mix_LoadWAV( "assets/guncock.wav" );
-    if( s1 == nullptr )
-    {
-        printf( "Failed to load high sound effect! SDL_mixer Error: %s\n", Mix_GetError() );
-        return false;
-    }
+//    s1 = Mix_LoadWAV( "assets/guncock.wav" );
+//    if( s1 == nullptr )
+//    {
+//        printf( "Failed to load high sound effect! SDL_mixer Error: %s\n", Mix_GetError() );
+//        return false;
+//    }
         
+    
+    initOptions();
     
     return true;
 }
@@ -81,7 +86,8 @@ bool menuoptions::setChanged(bool nv){
     
     if(selectedOpt != nullptr)
     {
-        Mix_PlayChannel( -1, s1, 0 );
+        sound->play();
+//        Mix_PlayChannel( -1, s1, 0 );
     }
     
     return changed;

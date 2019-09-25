@@ -12,16 +12,15 @@
  */
 
 #include "scene/BackgroundScene.h"
-#include "DrawableTexture.h"
+#include "../DrawableTexture.h"
 #include "app/AppClass.h"
 
 
 bool BackgroundScene::init() {
-    
-    SDL_Rect rr = {0,0,222,222};
+    SDL_Rect rr = {0,0,640,480};
     auto b = std::make_shared<DrawableTexture>( app, app->loadSurface("assets/dots.png"), rr);
     group.add(b);
-        return true;
+    return true;
 }
 
 BackgroundScene::~BackgroundScene() {

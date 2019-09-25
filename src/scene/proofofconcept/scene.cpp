@@ -80,7 +80,7 @@ bool scene::handle_ev_scene(SDL_Event* e){
         }
         if(scancode == SDL_SCANCODE_ESCAPE)
         {
-            tapp->scenes.pop_front();   // bye!
+//            tapp->scenes.pop_front();   // bye!
             return false;
         }
     }

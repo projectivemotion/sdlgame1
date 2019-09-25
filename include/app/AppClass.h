@@ -17,13 +17,17 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include "entities/entity.h"
+#include "SceneManager.h"
 
 class BaseScene;
+//class SceneManager;
 
 class AppClass {
 public:
     AppClass();
     AppClass(const AppClass& orig);
+    
+    SceneManager* getSceneManager();
     SDL_Texture* loadSurface(const char* path);
     entity* createEntity(const char* path);
     
@@ -47,7 +51,7 @@ public:
 
     //The window renderer
     SDL_Renderer* ren = NULL;
-    std::list<BaseScene*> scenes;
+//    std::list<BaseScene*> scenes;
     
 protected:
     bool init();
@@ -57,6 +61,7 @@ protected:
     bool apploop();
     
 private:
+    SceneManager scenes;
     //Screen dimension constants
     const int SCREEN_WIDTH = 640;
     const int SCREEN_HEIGHT = 480;

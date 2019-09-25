@@ -14,7 +14,7 @@
 #ifndef SCENE_H
 #define SCENE_H
 #include "app/AppClass.h"
-#include "scene/BaseScene.h"
+#include "BaseScene.h"
 #include "../../entities/player/bob.h"
 #include "entities/projectiles.h"
 

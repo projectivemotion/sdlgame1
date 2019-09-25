@@ -14,19 +14,18 @@
 #include "menuoptions.h"
 #include "FontSurface.h"
 
-typedef enum {
-    OPT1,
-    OPT2,
-    OPT3,
-    TOPTS
-} opts;
+//typedef enum {
+//    OPT1,
+//    OPT2,
+//    OPT3,
+//    TOPTS
+//} opts;
 
-void menuoptions::addOption(const char *pt, const SDL_Color& col, int x, int y){
-    
+void menuoptions::addOption(sceneid scenev, const char *pt, const SDL_Color& col, int x, int y){    
     int iheight = 50;
     int width = 200; 
         
-    opts.push_front({pt, letters.render(pt, col), {x,y,width,iheight}});
+    opts.push_front({pt, letters.render(pt, col), {x,y,width,iheight}, scenev});
 }
     
 bool menuoptions::init(){
@@ -34,8 +33,9 @@ bool menuoptions::init(){
     
     letters.init("assets/unispace.ttf", 33);
     
-    addOption("opcion 1", {0,0,0,0}, 100,100);
-    addOption("opcion 2", {255, 255, 255, 255}, 100, 200);
+    addOption(SCENE_BACKGROUND, "Scene 1", {0,0,255,128}, 100,100);
+    addOption(SCENE_BACKGROUND, "Scene 2", {255, 255, 255, 255}, 100, 200);
+    addOption(SCENE_BACKGROUND, "Scene 3", {255, 0, 255, 255}, 100, 300);
 
     rect.w = 640;
     rect.h = 480;
@@ -67,17 +67,17 @@ SDL_Texture *menuoptions::getTexture(){
 opt *menuoptions::getSelection(){
     return selectedOpt;
 }
-
-void menuoptions::setOptionHandler(std::function<void(void)> h){
-    handler = h;
-}
+//
+//void menuoptions::setOptionHandler(std::function<void(void)> h){
+//    handler = h;
+//}
 
 bool menuoptions::setChanged(bool nv){
     bool ov = changed;
     changed = nv;
     
     clean();
-    handler();
+//    handler();
     
     if(selectedOpt != nullptr)
     {

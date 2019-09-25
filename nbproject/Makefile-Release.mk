@@ -36,8 +36,13 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/include/drawgroup.o \
+	${OBJECTDIR}/src/BackgroundScene.o \
+	${OBJECTDIR}/src/BaseScene.o \
+	${OBJECTDIR}/src/DrawableTexture.o \
 	${OBJECTDIR}/src/FontSurface.o \
+	${OBJECTDIR}/src/ManagedScene.o \
 	${OBJECTDIR}/src/SDLManager.o \
+	${OBJECTDIR}/src/SceneManager.o \
 	${OBJECTDIR}/src/SurfaceMaker.o \
 	${OBJECTDIR}/src/app/AppClass.o \
 	${OBJECTDIR}/src/drawable.o \
@@ -47,7 +52,6 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/main.o \
 	${OBJECTDIR}/src/menuoptions.o \
 	${OBJECTDIR}/src/painter.o \
-	${OBJECTDIR}/src/scene/base/BaseScene.o \
 	${OBJECTDIR}/src/scene/menuscene.o \
 	${OBJECTDIR}/src/scene/proofofconcept/scene.o
 
@@ -81,15 +85,40 @@ ${OBJECTDIR}/include/drawgroup.o: include/drawgroup.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -Iinclude/ `pkg-config --cflags SDL2_ttf` `pkg-config --cflags SDL2_image` `pkg-config --cflags sdl2` `pkg-config --cflags SDL2_mixer`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/include/drawgroup.o include/drawgroup.cpp
 
+${OBJECTDIR}/src/BackgroundScene.o: src/BackgroundScene.cpp
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Iinclude/ `pkg-config --cflags SDL2_ttf` `pkg-config --cflags SDL2_image` `pkg-config --cflags sdl2` `pkg-config --cflags SDL2_mixer`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/BackgroundScene.o src/BackgroundScene.cpp
+
+${OBJECTDIR}/src/BaseScene.o: src/BaseScene.cpp
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Iinclude/ `pkg-config --cflags SDL2_ttf` `pkg-config --cflags SDL2_image` `pkg-config --cflags sdl2` `pkg-config --cflags SDL2_mixer`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/BaseScene.o src/BaseScene.cpp
+
+${OBJECTDIR}/src/DrawableTexture.o: src/DrawableTexture.cpp
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Iinclude/ `pkg-config --cflags SDL2_ttf` `pkg-config --cflags SDL2_image` `pkg-config --cflags sdl2` `pkg-config --cflags SDL2_mixer`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/DrawableTexture.o src/DrawableTexture.cpp
+
 ${OBJECTDIR}/src/FontSurface.o: src/FontSurface.cpp
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -Iinclude/ `pkg-config --cflags SDL2_ttf` `pkg-config --cflags SDL2_image` `pkg-config --cflags sdl2` `pkg-config --cflags SDL2_mixer`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/FontSurface.o src/FontSurface.cpp
 
+${OBJECTDIR}/src/ManagedScene.o: src/ManagedScene.cpp
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Iinclude/ `pkg-config --cflags SDL2_ttf` `pkg-config --cflags SDL2_image` `pkg-config --cflags sdl2` `pkg-config --cflags SDL2_mixer`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/ManagedScene.o src/ManagedScene.cpp
+
 ${OBJECTDIR}/src/SDLManager.o: src/SDLManager.cpp
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -Iinclude/ `pkg-config --cflags SDL2_ttf` `pkg-config --cflags SDL2_image` `pkg-config --cflags sdl2` `pkg-config --cflags SDL2_mixer`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/SDLManager.o src/SDLManager.cpp
+
+${OBJECTDIR}/src/SceneManager.o: src/SceneManager.cpp
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Iinclude/ `pkg-config --cflags SDL2_ttf` `pkg-config --cflags SDL2_image` `pkg-config --cflags sdl2` `pkg-config --cflags SDL2_mixer`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/SceneManager.o src/SceneManager.cpp
 
 ${OBJECTDIR}/src/SurfaceMaker.o: src/SurfaceMaker.cpp
 	${MKDIR} -p ${OBJECTDIR}/src
@@ -135,11 +164,6 @@ ${OBJECTDIR}/src/painter.o: src/painter.cpp
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -Iinclude/ `pkg-config --cflags SDL2_ttf` `pkg-config --cflags SDL2_image` `pkg-config --cflags sdl2` `pkg-config --cflags SDL2_mixer`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/painter.o src/painter.cpp
-
-${OBJECTDIR}/src/scene/base/BaseScene.o: src/scene/base/BaseScene.cpp
-	${MKDIR} -p ${OBJECTDIR}/src/scene/base
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -Iinclude/ `pkg-config --cflags SDL2_ttf` `pkg-config --cflags SDL2_image` `pkg-config --cflags sdl2` `pkg-config --cflags SDL2_mixer`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/scene/base/BaseScene.o src/scene/base/BaseScene.cpp
 
 ${OBJECTDIR}/src/scene/menuscene.o: src/scene/menuscene.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/scene

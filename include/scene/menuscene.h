@@ -14,26 +14,23 @@
 #ifndef MENUSCENE_H
 #define MENUSCENE_H
 
-#include "scene/BaseScene.h"
-#include "drawgroup.h"
 #include <SDL2/SDL_ttf.h>
 #include <memory>
+#include "ManagedScene.h"
 #include "menuoptions.h"
 #include "FontSurface.h"
 
-class menuscene : public BaseScene {
-    using BaseScene::BaseScene;
-    virtual bool handle_mouse_motion(SDL_Event *e);
+class menuscene : public ManagedScene {
+public:
+    using ManagedScene::ManagedScene;
+    virtual bool handle_ev_mmotion(SDL_Event *e);
+    virtual bool handle_ev_mousedown(SDL_Event *e);
     
     virtual bool init();
-    virtual bool draw();
     virtual ~menuscene();
     
 private:
-    drawgroup group;
-    SDL_Texture *sfbg;
     std::shared_ptr<menuoptions> menu;
-    std::unique_ptr<FontSurface> writer;
 };
 
 #endif /* MENUSCENE_H */

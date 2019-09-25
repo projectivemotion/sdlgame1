@@ -18,13 +18,14 @@
 #include "FontSurface.h"
 #include <SDL2/SDL_mixer.h>
 #include <algorithm>
-#include <functional>
+//#include <functional>
 
 struct opt {
     const char* t;
     SDL_Surface* ren;
     SDL_Rect rec;
     int state;
+    sceneid sceneidv;
 };
 
 class menuoptions : public drawable {
@@ -37,7 +38,7 @@ public:
     
 public:
     
-    virtual void setOptionHandler(std::function<void(void)> h);
+//    virtual void setOptionHandler(std::function<void(void)> h);
     virtual bool handleMouseEv(SDL_Event *e);
     virtual ~menuoptions();
     
@@ -50,11 +51,11 @@ protected:
     bool setChanged(bool nv);
     
     virtual SDL_Texture *buildTexture();    
-    virtual void addOption(const char *pt, const SDL_Color& color, int x, int y);
+    virtual void addOption(sceneid scenev, const char *pt, const SDL_Color& color, int x, int y);
     
     
 private:
-    std::function<void(void)> handler;
+//    std::function<void(void)> handler;
     
     
     

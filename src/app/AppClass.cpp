@@ -26,10 +26,6 @@ AppClass::AppClass(const AppClass& orig) {
 }
 
 AppClass::~AppClass() {
-    for (auto const& i : scenes) {
-        delete i;
-    }
-    
     
 	//Destroy window	
 	SDL_DestroyRenderer( ren );
@@ -113,8 +109,10 @@ bool AppClass::loadAssets() {
 }
 
 bool AppClass::loadScenes() {
-    scenes.push_back(new menuscene(this));
-    scenes.back()->init();
+    
+    scenes.init(this);
+//    scenes.push_back(new menuscene(this));
+//    scenes.back()->init();
 //    scenes.push_back(new scene(this));
     return true;
 }
@@ -124,11 +122,18 @@ SDL_Rect AppClass::getRect(){
     return r;
 }
 
+SceneManager* AppClass::getSceneManager(){    
+    return &scenes;
+}
+
 bool AppClass::apploop(){
 //    int quit = false;
     
     while ( false == quit )
-        scenes.front()->loop();
+    {        
+        scenes.loop();
+//        scenes.front()->loop();
+    }
     
     return true;    
 //    return true;

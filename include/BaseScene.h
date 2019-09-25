@@ -13,9 +13,10 @@
 
 #ifndef BASESCENE_H
 #define BASESCENE_H
-#include "app/AppClass.h"
+//#include "app/AppClass.h"
 #include <SDL2/SDL_events.h>
 
+class AppClass;
 
 class BaseScene {
 public:
@@ -23,7 +24,8 @@ public:
     BaseScene(const BaseScene& orig);
     
     virtual bool init();
-    virtual bool handle_mouse_motion(SDL_Event *e);
+    virtual bool handle_ev_mmotion(SDL_Event *e);
+    virtual bool handle_ev_mousedown(SDL_Event *e);
     virtual bool handle_ev_scene(SDL_Event *e);
     virtual bool loop();
     virtual bool draw();

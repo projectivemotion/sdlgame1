@@ -11,11 +11,9 @@
  * Created on September 17, 2019, 7:40 PM
  */
 
-#include "scene/BaseScene.h"
+#include "BaseScene.h"
+#include "app/AppClass.h"
 #include <SDL2/SDL.h>
-//
-//BaseScene::BaseScene() {
-//}
 
 BaseScene::BaseScene(AppClass* papp) {
     app = papp;
@@ -35,7 +33,10 @@ bool BaseScene::init(){
 bool BaseScene::handle_ev_scene(SDL_Event* e){
     return true;    
 }
-bool BaseScene::handle_mouse_motion(SDL_Event* e){
+bool BaseScene::handle_ev_mousedown(SDL_Event* e){
+    return true;    
+}
+bool BaseScene::handle_ev_mmotion(SDL_Event* e){
     return true;    
 }
 
@@ -46,12 +47,23 @@ bool BaseScene::loop(){
         while(!quitscene && SDL_PollEvent(&e) != 0)
         {
             switch(e.type){
+                
+                case SDL_MOUSEBUTTONDOWN:
+                    quitscene = false == handle_ev_mousedown(&e);
+                    break;
+                case SDL_KEYDOWN:
+                    if(e.key.keysym.scancode == SDL_SCANCODE_ESCAPE)
+                    {
+                        app->getSceneManager()->gotoScene(SCENE_MENU);
+                        return false;
+                    }
+                    break;
                 case SDL_QUIT:
                     app->quit = true;
                     quitscene = true;
                     break;
                 case SDL_MOUSEMOTION:
-                    quitscene = false == handle_mouse_motion(&e);
+                    quitscene = false == handle_ev_mmotion(&e);
                     break;
                 default:
                     quitscene = false == handle_ev_scene(&e);

@@ -42,52 +42,86 @@ bool menuoptions::init(){
     rect.x = 0;
     rect.y = 0;
     
-    update = true;
+    changed = true;
+    selectedOpt = nullptr;
     
     return true;
 }
 
 SDL_Texture *menuoptions::getTexture(){
-    if(update)
+    if(textx == nullptr)
         return buildTexture();
     return textx;
 }
 
+opt *menuoptions::getSelection(){
+    return selectedOpt;
+}
+
+void menuoptions::setOptionHandler(std::function<void(void)> h){
+    handler = h;
+}
+
+bool menuoptions::setChanged(bool nv){
+    bool ov = changed;
+    changed = nv;
+    
+    clean();
+    handler();
+    
+    
+    return changed;
+}
+
 
 bool menuoptions::handleMouseEv(SDL_Event *e){
+    auto* prevSelection = selectedOpt;
+    selectedOpt = nullptr;
+    
     switch(e->type){
         case SDL_MOUSEMOTION:
             int x = e->motion.x;
             int y = e->motion.y;
             
-            printf("Mouse %d %d\n", x, y);
+//            printf("Mouse %d %d\n", x, y);
             for(auto& opt : opts){
                 bool hover = (x > opt.rec.x && x < opt.rec.x+opt.rec.w
                         && y > opt.rec.y && y < opt.rec.y + opt.rec.h
                         );
                 int newstate = hover ? 1 : 0;
+                
                 if(hover){
-                    printf("Hit: %s %d %d %d %d\n", opt.t, opt.rec.x, opt.rec.y,
-                            opt.rec.w, opt.rec.h);
+//                    printf("Hit: %s %d %d %d %d\n", opt.t, opt.rec.x, opt.rec.y,
+//                            opt.rec.w, opt.rec.h);
+                    
+                    selectedOpt = &opt;
                 }
                 
-                if(newstate == opt.state) continue;
-                
-                update = true;
                 opt.state = hover ? 1 : 0;
             }
             
             break;
     }
+    if(prevSelection != selectedOpt)
+    {
+        setChanged(true);
+    }
     return true;
+}
+
+void menuoptions::clean(){
+    
+    if(textx == nullptr)
+        return;
+    
+    SDL_DestroyTexture(textx);
+    textx = nullptr;
 }
 
 SDL_Texture *menuoptions::buildTexture(){
     
     // render opts
-    
-    if(textx != nullptr)
-        SDL_DestroyTexture(textx);
+//    clean();
     
     SDL_Texture *mTexture = nullptr;
     SDL_Surface *surface = nullptr;
@@ -103,10 +137,10 @@ SDL_Texture *menuoptions::buildTexture(){
     
     // draw
     for(auto& opt : opts){
-        printf("%d %d %d %d\n", opt.rec.x, opt.rec.y, opt.rec.w, opt.rec.h);
+//        printf("%d %d %d %d\n", opt.rec.x, opt.rec.y, opt.rec.w, opt.rec.h);
         SDL_FillRect(surface, &opt.rec, opt.state == 1 ? red : black);//
         SDL_BlitSurface(opt.ren, nullptr, surface, &opt.rec);
-        printf("%d %d %d %d\n", opt.rec.x, opt.rec.y, opt.rec.w, opt.rec.h);
+//        printf("%d %d %d %d\n", opt.rec.x, opt.rec.y, opt.rec.w, opt.rec.h);
     }
     //
     
@@ -115,7 +149,7 @@ SDL_Texture *menuoptions::buildTexture(){
     
     SDL_FreeSurface(surface);
     
-    update = false;
+//    setChanged(false);
     return textx;
 }
 

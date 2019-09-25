@@ -17,6 +17,7 @@
 #include "drawable.h"
 #include "FontSurface.h"
 #include <algorithm>
+#include <functional>
 
 struct opt {
     const char* t;
@@ -33,17 +34,28 @@ public:
     virtual SDL_Rect *getRect();
     virtual SDL_Texture *getTexture();
     
+public:
+    
+    virtual void setOptionHandler(std::function<void(void)> h);
     virtual bool handleMouseEv(SDL_Event *e);
     virtual ~menuoptions();
     
+    virtual opt* getSelection();
+    
+    
 protected:
+    
+    virtual void clean();
+    bool setChanged(bool nv);
     
     virtual SDL_Texture *buildTexture();    
     virtual void addOption(const char *pt, const SDL_Color& color, int x, int y);
     
     
 private:
-    bool update;
+    std::function<void(void)> handler;
+    opt* selectedOpt;
+    bool changed;
     FontSurface letters;
     std::list<opt> opts;
     

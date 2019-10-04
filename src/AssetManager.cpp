@@ -65,6 +65,9 @@ std::shared_ptr<SDL_Surface> AssetManager::open(SDL_Surface *sfc) {
     }); 
 }
 
+//entity<SDL_Surface> AssetManager::clone(const entity<SDL_Surface> &e){
+//    
+//}
 //AssetManager::AssetManager(const AssetManager& orig) {
 //}
 

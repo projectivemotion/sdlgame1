@@ -21,11 +21,11 @@ bob::bob(const bob& orig) {
 }
 
 bob::~bob() {
-    e->free();
-    delete e;
+//    e->free();
+//    delete e;
 }
 
-entity<SDL_Texture>* bob::getentity(){
+entity<SDL_Texture>& bob::getentity(){
     return e;
 }
 

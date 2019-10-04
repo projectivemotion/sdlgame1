@@ -42,6 +42,7 @@ public:
     AssetManager();
 //    AssetManager(const AssetManager& orig);
     
+//    std::shared_ptr<SDL_Surface> clone(entity<SDL_Surface> e);
     std::shared_ptr<SDL_Surface> open(SDL_Surface *sfc);
     std::shared_ptr<SDL_Surface> openid(assetid id);
     std::shared_ptr<FontSurface> openFont(assetid id, int size);

@@ -37,7 +37,7 @@ public:
     
 //    entity<SDL_Surface>* reds();
     entity<SDL_Texture>* red();
-    entity<SDL_Texture>* blue();
+    entity<SDL_Texture> blue();
     entity<SDL_Texture>* yellow();
     entity<SDL_Texture>* green();
     

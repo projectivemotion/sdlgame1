@@ -22,10 +22,10 @@ public:
     bob(AppClass& app);
     bob(const bob& orig);
     
-    entity<SDL_Texture> *getentity();
+    entity<SDL_Texture> &getentity();
     virtual ~bob();
 private:
-    entity<SDL_Texture> *e;
+    entity<SDL_Texture> e;
 };
 
 #endif /* BOB_H */

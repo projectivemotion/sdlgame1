@@ -36,7 +36,7 @@ bool scene::draw(){
     collider.draw(*app);
     
     app->draw(
-        player->getentity()->move(x, y)
+        player->getentity().move(x, y)
     );
     
     SDL_RenderPresent( app->ren );
@@ -76,7 +76,7 @@ bool scene::handle_ev_scene(SDL_Event* e){
         }
         if(scancode == SDL_SCANCODE_SPACE)
         {
-            collider.fire(&(tapp->blue()->move(x, y)), {60, 20});
+            collider.fire(&(tapp->blue().move(x, y)), {60, 20});
         }
         if(scancode == SDL_SCANCODE_ESCAPE)
         {

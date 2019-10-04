@@ -164,16 +164,17 @@ entity<SDL_Texture>* AppClass::red(){
     return createEntity("dots.png")->from(0,0,100,100);
 }
 
-entity<SDL_Texture>* AppClass::blue(){
-    return createEntity("dots.png")->from(100,100,100,100);
+entity<SDL_Texture> AppClass::blue(){
+    return entity<SDL_Texture>(loadSurface("dots.png"));
+//    return createEntity("dots.png")->from(100,100,100,100);
 }
 
-entity<SDL_Texture>* AppClass::yellow(){
-    return createEntity("dots.png")->from(0,100,100,100);
-}
-entity<SDL_Texture>* AppClass::green(){
-    return createEntity("dots.png")->from(100,0,100,100);
-}
+//entity<SDL_Texture>* AppClass::yellow(){
+//    return createEntity("dots.png")->from(0,100,100,100);
+//}
+//entity<SDL_Texture>* AppClass::green(){
+//    return createEntity("dots.png")->from(100,0,100,100);
+//}
 
 SDL_Surface* AppClass::loadSurfacex(const char* path)
 {

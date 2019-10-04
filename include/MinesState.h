@@ -49,8 +49,9 @@ public:
     void print();
     
     virtual ~MinesState();
-private:
+    
     const int MINE = -1;
+private:
     int w;
     int h;
     

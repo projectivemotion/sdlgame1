@@ -31,7 +31,11 @@ public:
 public:
     void setState(MinesState *pstate);
     virtual ~MinesDrawable();
+    
 private:
+    
+    std::map<int, entity<SDL_Surface>> shapes;
+    
     SDL_Texture* textx = nullptr;
     
     std::shared_ptr<SDL_Surface> dots;

@@ -43,8 +43,21 @@ std::shared_ptr<SDL_Surface> AssetManager::openid(assetid id) {
 //    return surf[id];
 }
 
-std::shared_ptr<SDL_Surface> AssetManager::open(SDL_Surface *sfc) {
+std::shared_ptr<FontSurface> AssetManager::openFont(assetid id, int size) {
+    
+    int ix = size*1000+id;
+    auto f = fontA.find(ix);
+    if(f == fontA.end())
+    {
+        auto b = std::make_shared<FontSurface>(assetlibj[id], size);
+        fontA[ix] = b;        
+        return b;
+    }
+    
+    return f->second;
+}
 
+std::shared_ptr<SDL_Surface> AssetManager::open(SDL_Surface *sfc) {
     return std::shared_ptr<SDL_Surface>(sfc, [](auto p) {
        std::cout << "Call delete from lambda...\n";
 

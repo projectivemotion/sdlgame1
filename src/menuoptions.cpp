@@ -24,7 +24,8 @@
 //void menuoptions::addOption(sceneid scenev, const char *pt, const SDL_Color& col, int x, int y){    
 void menuoptions::initOptions(){
     
-    auto letters = app->getAssetManager().getFont("assets/unispace.ttf", 33);
+//    auto letters = app->getAssetManager().getFont("assets/unispace.ttf", 33);
+    auto letters = app->getAssetManager().openFont(ASSET_FONT, 33);
     auto add = [this, letters](sceneid scenev, const char *pt, const SDL_Color& col, int x, int y){    
         int iheight = 50;
         int width = 200; 

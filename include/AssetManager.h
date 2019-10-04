@@ -25,6 +25,7 @@
 
 enum assetid {
     ASSET_DOTSIMG,
+    ASSET_FONT,
     ASSETS_TOTAL
 };
 
@@ -43,13 +44,18 @@ public:
     
     std::shared_ptr<SDL_Surface> open(SDL_Surface *sfc);
     std::shared_ptr<SDL_Surface> openid(assetid id);
+    std::shared_ptr<FontSurface> openFont(assetid id, int size);
     
     std::shared_ptr<FontSurface> getFont(const char*path, int size);
     std::shared_ptr<ChunkSound> getSound(const char*path);
     
     virtual ~AssetManager();
+
+
+    
 private:
     std::map<assetid, std::shared_ptr<SDL_Surface>> surf;
+    std::map<int, std::shared_ptr<FontSurface>> fontA;
     std::set<void*> ptr;
     
 };

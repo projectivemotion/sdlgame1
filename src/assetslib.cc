@@ -6,5 +6,6 @@
 
 
 const char* assetlibj[] = {
-    "assets/dots.png"
+    "assets/dots.png",
+    "assets/unispace.ttf"
 };

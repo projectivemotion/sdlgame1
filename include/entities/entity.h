@@ -15,14 +15,16 @@
 #define ENTITY_H
 
 #include <SDL2/SDL_render.h>
+#include <memory>
 
 template<class T>
 class entity {
 public:
     entity(){
     }
-    entity(T *texture){
+    entity(std::shared_ptr<T> texture){
         x = texture;
+        from(0,0,0,0);
     }
 //    entity(std::shared_ptr<T> p){
 //        
@@ -33,20 +35,25 @@ public:
     virtual entity& move(int x, int y);
     virtual entity& resize(int w, int h);
     virtual T *get(){
-        return x;
+        return x.get();
     }
     SDL_Rect &getrect(){
         return t;
     }
-    
+    SDL_Rect *getclip(){
+        if(s.w == 0)
+            return nullptr;
+        return &s;
+    }
 //    virtual void draw(SDL_Renderer *ren);
     virtual void free();
     
     virtual ~entity();
-    SDL_Rect t;
-    SDL_Rect s;
+    
 protected:
-    T *x;
+    SDL_Rect s;
+    SDL_Rect t;
+    std::shared_ptr<T> x;
 };
 
 #endif /* ENTITY_H */

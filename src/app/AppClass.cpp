@@ -146,14 +146,14 @@ bool AppClass::apploop(){
 }
 
 bool AppClass::draw(entity<SDL_Texture>& e){
-    SDL_RenderCopy(ren, e.get(), &e.s, &e.t);
+    SDL_RenderCopy(ren, e.get(), e.getclip(), &e.getrect());
 //    e.draw(ren);    
     return true;
 //    SDL_RenderCopy(ren, x, &s, &t);
 }
 
 entity<SDL_Texture>* AppClass::createEntity(const char* path){
-    return new entity<SDL_Texture>(loadSurface(path));
+    return new entity<SDL_Texture>(assets.openT(loadSurface(path)));
 }
 
 //entity<SDL_Surface>* AppClass::reds(){
@@ -165,7 +165,7 @@ entity<SDL_Texture>* AppClass::red(){
 }
 
 entity<SDL_Texture> AppClass::blue(){
-    return entity<SDL_Texture>(loadSurface("dots.png"));
+    return entity<SDL_Texture>(assets.openT(loadSurface("dots.png")));
 //    return createEntity("dots.png")->from(100,100,100,100);
 }
 

@@ -44,31 +44,39 @@ bool MinesDrawable::init(){
     int ch = floor(h/state->getH());
     
     // init shapes map
-    entity<SDL_Surface> red(dots.get());
-    entity<SDL_Surface> yellow(dots.get());
-    entity<SDL_Surface> blue(dots.get());
+    entity<SDL_Surface> red(dots);
+    entity<SDL_Surface> yellow(dots);
+    entity<SDL_Surface> green(dots);
     
         yellow.from(0, 100, 100, 100)->resize(cw, ch);
         red.from(0, 0, 100, 100)->resize(cw, ch);
-        blue.from(100, 0, 100, 100)->resize(cw, ch);
+        green.from(100, 0, 100, 100)->resize(cw, ch);
 
         shapes[state->MINE] = red;
         shapes[0] = yellow;
-        shapes[1] = blue;
+        shapes[1] = app->getAssetManager().write(green, 
+                font->prender("1", {0,255,128,128}).get());
 //        shapes[1] = font->render("1", {0,0,0,255});
-        shapes[2] = font->render("2", {0,0,0,0});
-        shapes[3] = font->render("3", {0,0,0,0});
-        shapes[4] = font->render("4", {0,0,0,255});
-        shapes[5] = font->render("5", {0,0,0,255});
-        shapes[6] = font->render("6", {0,0,0,255});
-        shapes[7] = font->render("7", {0,0,0,255});
-        shapes[8] = font->render("8", {0,0,0,255});
+        shapes[2] = app->getAssetManager().write(green, 
+                font->prender("2", {0,255,128,128}).get());
+        shapes[3] = app->getAssetManager().write(green, 
+                font->prender("3", {0,255,128,128}).get());
+        shapes[4] = app->getAssetManager().write(green, 
+                font->prender("4", {0,255,128,128}).get());
+        shapes[5] = app->getAssetManager().write(green, 
+                font->prender("5", {0,255,128,128}).get());
+        shapes[6] = app->getAssetManager().write(green, 
+                font->prender("6", {0,255,128,128}).get());
+        shapes[7] = app->getAssetManager().write(green, 
+                font->prender("7", {0,255,128,128}).get());
+        shapes[8] = app->getAssetManager().write(green, 
+                font->prender("8", {0,255,128,128}).get());
         
-        for(auto b : shapes)
-//        {
-            if(b.first > 1)
-            b.second.from(0, 0, 20, 20)->resize(cw, ch);
-//        }
+        for(auto &b : shapes)
+        {
+//            if(b.first > 1)
+                b.second.resize(cw, ch);
+        }
     
     // end init shapes map
     
@@ -101,28 +109,22 @@ SDL_Texture * MinesDrawable::buildTexture(){
         SDL_CreateRGBSurface(0, w, h, 32, 0, 0, 0, 0)
     );
     
-    entity<SDL_Surface> red(dots.get());
-    entity<SDL_Surface> yellow(dots.get());
-    
-    yellow.from(0, 100, 100, 100)->resize(cw, ch);
-    red.from(0, 0, 100, 100)->resize(cw, ch);
-//    red.from(0, 100, cw, ch)->resize(cw, ch);
-    
     entity<SDL_Surface> *sprite;
     for(const auto &cell : state->getcells())
     {
+        int v = *cell.value;
 //        sprite = &yellow;
-        sprite = &shapes[*cell.value];
+        sprite = &shapes[v];
 //        if(state->ismine(*cell.value))
 //        {
 //            sprite = &red;
 //        }
         
-        printf("Drawing v:%d %d %d %d %d\n", *cell.value, cell.x, cell.y, cw, ch);
+        printf("Drawing v:%d %d %d %d %d\n", v, cell.x, cell.y, cw, ch);
         sprite->move(cell.x*cw, cell.y*ch);
 
-//            SDL_BlitSurface(red.get(), &red.s, surfaceptr.get(), &red.t);
-        SDL_BlitScaled(sprite->get(), &sprite->s, surfaceptr.get(), &sprite->t);
+        SDL_BlitScaled(sprite->get(), sprite->getclip(), surfaceptr.get(), &sprite->getrect());
+//        SDL_BlitScaled(sprite->get(), nullptr, surfaceptr.get(), &sprite->t);
     }
         
     textx = SDL_CreateTextureFromSurface(app->ren, surfaceptr.get());

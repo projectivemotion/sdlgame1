@@ -14,8 +14,10 @@
 #include <SDL2/SDL_ttf.h>
 
 #include "FontSurface.h"
+#include "AssetManager.h"
 
-FontSurface::FontSurface(const char* fontpath, int sz) {
+FontSurface::FontSurface(const char* fontpath, int sz, AssetManager *am) {
+    mgr = am;
     init(fontpath, sz);
 }
 
@@ -25,6 +27,10 @@ void FontSurface::init(const char* fontpath, int sz) {
     exit(2);
     }
     font = TTF_OpenFont(fontpath, sz);
+}
+
+std::shared_ptr<SDL_Surface> FontSurface::prender(const char* t, const SDL_Color &textColor){
+    return mgr->open(render(t, textColor));
 }
 
 SDL_Surface *FontSurface::render(const char* t, const SDL_Color &textColor){
@@ -46,12 +52,12 @@ SDL_Surface *FontSurface::getSurface()
     return surface;
 }
 
-FontSurface::FontSurface(const FontSurface& orig) {
-}
-FontSurface::FontSurface() {
-    font = nullptr;
-    surface = nullptr;
-}
+//FontSurface::FontSurface(const FontSurface& orig) {
+//}
+//FontSurface::FontSurface() {
+//    font = nullptr;
+//    surface = nullptr;
+//}
 
 FontSurface::~FontSurface() {
     TTF_CloseFont(font);

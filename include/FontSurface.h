@@ -16,20 +16,24 @@
 
 #include "SurfaceMaker.h"
 #include <SDL2/SDL_ttf.h>
+#include <memory>
 
+class AssetManager;
 
 class FontSurface : public SurfaceMaker {
 public:
-    FontSurface();
-    FontSurface(const char* fontpath, int sz);
+//    FontSurface();
+    FontSurface(const char* fontpath, int sz, AssetManager *am);
     
     void init(const char* fontpath, int sz);
     FontSurface(const FontSurface& orig);
     
+    virtual std::shared_ptr<SDL_Surface> prender(const char* t, const SDL_Color& color);
     virtual SDL_Surface* render(const char* t, const SDL_Color& color);
     virtual SDL_Surface* getSurface();
     virtual ~FontSurface();
 private:
+    AssetManager *mgr;
     SDL_Surface* surface;
     TTF_Font *font;
 };

@@ -19,6 +19,7 @@
 
 #include "FontSurface.h"
 #include "ChunkSound.h"
+#include "entities/entity.h"
 #include <set>
 #include <memory>
 #include <map>
@@ -42,10 +43,12 @@ public:
     AssetManager();
 //    AssetManager(const AssetManager& orig);
     
-//    std::shared_ptr<SDL_Surface> clone(entity<SDL_Surface> e);
+    std::shared_ptr<SDL_Surface> write(entity<SDL_Surface> e, SDL_Surface* t);
     std::shared_ptr<SDL_Surface> open(SDL_Surface *sfc);
+    std::shared_ptr<SDL_Texture> openT(SDL_Texture *sfc);
     std::shared_ptr<SDL_Surface> openid(assetid id);
     std::shared_ptr<FontSurface> openFont(assetid id, int size);
+    
     
     std::shared_ptr<FontSurface> getFont(const char*path, int size);
     std::shared_ptr<ChunkSound> getSound(const char*path);

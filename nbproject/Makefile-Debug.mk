@@ -43,6 +43,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/DrawableTexture.o \
 	${OBJECTDIR}/src/FontSurface.o \
 	${OBJECTDIR}/src/ManagedScene.o \
+	${OBJECTDIR}/src/MinesState.o \
 	${OBJECTDIR}/src/SceneManager.o \
 	${OBJECTDIR}/src/SurfaceMaker.o \
 	${OBJECTDIR}/src/app/AppClass.o \
@@ -122,6 +123,11 @@ ${OBJECTDIR}/src/ManagedScene.o: src/ManagedScene.cpp
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Iinclude/ `pkg-config --cflags SDL2_ttf` `pkg-config --cflags SDL2_image` `pkg-config --cflags sdl2` `pkg-config --cflags SDL2_mixer`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/ManagedScene.o src/ManagedScene.cpp
+
+${OBJECTDIR}/src/MinesState.o: src/MinesState.cpp
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Iinclude/ `pkg-config --cflags SDL2_ttf` `pkg-config --cflags SDL2_image` `pkg-config --cflags sdl2` `pkg-config --cflags SDL2_mixer`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/MinesState.o src/MinesState.cpp
 
 ${OBJECTDIR}/src/SceneManager.o: src/SceneManager.cpp
 	${MKDIR} -p ${OBJECTDIR}/src

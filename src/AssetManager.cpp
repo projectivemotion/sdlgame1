@@ -12,6 +12,7 @@
  */
 
 #include "AssetManager.h"
+#include <iostream>
 
 AssetManager::AssetManager() {
 }
@@ -24,13 +25,35 @@ std::shared_ptr<ChunkSound> AssetManager::getSound(const char* path) {
     return std::make_shared<ChunkSound>(path);
 }
 
-SDL_Surface* AssetManager::open(SDL_Surface *s) {
-    ptr.insert((void*)s);
-    return s;
+std::shared_ptr<SDL_Surface> AssetManager::openid(assetid id) {
+//    auto f = surf.find(id);
+//    if(f == surf.end()){
+        
+    return open(IMG_Load(assetlibj[id]));
+//        auto ptr = std::shared_ptr<SDL_Surface>(IMG_Load(assetlibj[id]), [](auto p) {
+//           std::cout << "Call delete from lambda...\n";
+//           
+//           SDL_FreeSurface(p);
+//        });
+     
+//        surf[id] = ptr;
+//        return ptr;
+//    }
+    
+//    return surf[id];
 }
 
-AssetManager::AssetManager(const AssetManager& orig) {
+std::shared_ptr<SDL_Surface> AssetManager::open(SDL_Surface *sfc) {
+
+    return std::shared_ptr<SDL_Surface>(sfc, [](auto p) {
+       std::cout << "Call delete from lambda...\n";
+
+       SDL_FreeSurface(p);
+    }); 
 }
+
+//AssetManager::AssetManager(const AssetManager& orig) {
+//}
 
 AssetManager::~AssetManager() {
 }

@@ -12,7 +12,7 @@
  */
 
 #include "app/AppClass.h"
-#include "../scene/proofofconcept/scene.h"
+#include "scene.h"
 #include "scene/menuscene.h"
 #include "AssetManager.h"
 
@@ -145,29 +145,39 @@ bool AppClass::apploop(){
 //    return true;
 }
 
-bool AppClass::draw(entity& e){
-    e.draw(ren);    
+bool AppClass::draw(entity<SDL_Texture>& e){
+    SDL_RenderCopy(ren, e.get(), &e.s, &e.t);
+//    e.draw(ren);    
     return true;
 //    SDL_RenderCopy(ren, x, &s, &t);
 }
 
-entity* AppClass::createEntity(const char* path){
-    return new entity(loadSurface(path));
+entity<SDL_Texture>* AppClass::createEntity(const char* path){
+    return new entity<SDL_Texture>(loadSurface(path));
 }
 
-entity* AppClass::red(){
+//entity<SDL_Surface>* AppClass::reds(){
+//    return new entity <SDL_Surface> (loadSurfacex("assets/dots.png"));
+//}
+
+entity<SDL_Texture>* AppClass::red(){
     return createEntity("dots.png")->from(0,0,100,100);
 }
 
-entity* AppClass::blue(){
+entity<SDL_Texture>* AppClass::blue(){
     return createEntity("dots.png")->from(100,100,100,100);
 }
 
-entity* AppClass::yellow(){
+entity<SDL_Texture>* AppClass::yellow(){
     return createEntity("dots.png")->from(0,100,100,100);
 }
-entity* AppClass::green(){
+entity<SDL_Texture>* AppClass::green(){
     return createEntity("dots.png")->from(100,0,100,100);
+}
+
+SDL_Surface* AppClass::loadSurfacex(const char* path)
+{
+    return IMG_Load( path );
 }
 
 SDL_Texture* AppClass::loadSurface(const char* path)
@@ -176,7 +186,7 @@ SDL_Texture* AppClass::loadSurface(const char* path)
     SDL_Texture* newTexture = NULL;
 
     //Load image at specified path
-    SDL_Surface* loadedSurface = IMG_Load( path );
+    SDL_Surface* loadedSurface = loadSurfacex(path);
     if( loadedSurface == NULL )
     {
             printf( "Unable to load image %s! SDL_image Error: %s\n", path, IMG_GetError() );

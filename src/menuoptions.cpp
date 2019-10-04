@@ -36,6 +36,7 @@ void menuoptions::initOptions(){
     add(SCENE_BACKGROUND, "4 Balls", {0,0,255,128}, 100,100);
     add(SCENE_5BALLS, "5 Balls", {255, 255, 255, 255}, 100, 200);
     add(SCENE_BACKGROUND, "Scene 3", {255, 0, 255, 255}, 100, 300);
+    add(SCENE_MINES, "Mines", {255, 0, 255, 255}, 100, 400);
 }
     
 bool menuoptions::init(){

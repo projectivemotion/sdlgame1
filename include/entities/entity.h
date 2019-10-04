@@ -16,27 +16,37 @@
 
 #include <SDL2/SDL_render.h>
 
-
+template<class T>
 class entity {
 public:
-    entity();
-    entity(SDL_Texture *texture);
-    entity(const entity& orig);
+    entity(){
+    }
+    entity(T *texture){
+        x = texture;
+    }
+//    entity(std::shared_ptr<T> p){
+//        
+//    }
+//    entity(const entity& orig);
     
     virtual entity* from(int x, int y, int w, int h);
     virtual entity& move(int x, int y);
     virtual entity& resize(int w, int h);
+    virtual T *get(){
+        return x;
+    }
+    SDL_Rect &getrect(){
+        return t;
+    }
     
-    SDL_Rect &getrect();
-    
-    virtual void draw(SDL_Renderer *ren);
+//    virtual void draw(SDL_Renderer *ren);
     virtual void free();
     
     virtual ~entity();
-protected:
-    SDL_Texture *x;
     SDL_Rect t;
     SDL_Rect s;
+protected:
+    T *x;
 };
 
 #endif /* ENTITY_H */

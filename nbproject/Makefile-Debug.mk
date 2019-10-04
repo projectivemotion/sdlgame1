@@ -43,10 +43,12 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/DrawableTexture.o \
 	${OBJECTDIR}/src/FontSurface.o \
 	${OBJECTDIR}/src/ManagedScene.o \
+	${OBJECTDIR}/src/MinesDrawable.o \
 	${OBJECTDIR}/src/MinesState.o \
 	${OBJECTDIR}/src/SceneManager.o \
 	${OBJECTDIR}/src/SurfaceMaker.o \
 	${OBJECTDIR}/src/app/AppClass.o \
+	${OBJECTDIR}/src/assetslib.o \
 	${OBJECTDIR}/src/drawable.o \
 	${OBJECTDIR}/src/entities/entity.o \
 	${OBJECTDIR}/src/entities/player/bob.o \
@@ -56,6 +58,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/painter.o \
 	${OBJECTDIR}/src/scene/BackgroundScene.o \
 	${OBJECTDIR}/src/scene/BallScene.o \
+	${OBJECTDIR}/src/scene/MinesScene.o \
 	${OBJECTDIR}/src/scene/menuscene.o \
 	${OBJECTDIR}/src/scene/proofofconcept/scene.o
 
@@ -124,6 +127,11 @@ ${OBJECTDIR}/src/ManagedScene.o: src/ManagedScene.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Iinclude/ `pkg-config --cflags SDL2_ttf` `pkg-config --cflags SDL2_image` `pkg-config --cflags sdl2` `pkg-config --cflags SDL2_mixer`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/ManagedScene.o src/ManagedScene.cpp
 
+${OBJECTDIR}/src/MinesDrawable.o: src/MinesDrawable.cpp
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Iinclude/ `pkg-config --cflags SDL2_ttf` `pkg-config --cflags SDL2_image` `pkg-config --cflags sdl2` `pkg-config --cflags SDL2_mixer`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/MinesDrawable.o src/MinesDrawable.cpp
+
 ${OBJECTDIR}/src/MinesState.o: src/MinesState.cpp
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
@@ -143,6 +151,11 @@ ${OBJECTDIR}/src/app/AppClass.o: src/app/AppClass.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/app
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Iinclude/ `pkg-config --cflags SDL2_ttf` `pkg-config --cflags SDL2_image` `pkg-config --cflags sdl2` `pkg-config --cflags SDL2_mixer`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/app/AppClass.o src/app/AppClass.cpp
+
+${OBJECTDIR}/src/assetslib.o: src/assetslib.cc
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Iinclude/ `pkg-config --cflags SDL2_ttf` `pkg-config --cflags SDL2_image` `pkg-config --cflags sdl2` `pkg-config --cflags SDL2_mixer`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/assetslib.o src/assetslib.cc
 
 ${OBJECTDIR}/src/drawable.o: src/drawable.cpp
 	${MKDIR} -p ${OBJECTDIR}/src
@@ -188,6 +201,11 @@ ${OBJECTDIR}/src/scene/BallScene.o: src/scene/BallScene.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/scene
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Iinclude/ `pkg-config --cflags SDL2_ttf` `pkg-config --cflags SDL2_image` `pkg-config --cflags sdl2` `pkg-config --cflags SDL2_mixer`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/scene/BallScene.o src/scene/BallScene.cpp
+
+${OBJECTDIR}/src/scene/MinesScene.o: src/scene/MinesScene.cpp
+	${MKDIR} -p ${OBJECTDIR}/src/scene
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Iinclude/ `pkg-config --cflags SDL2_ttf` `pkg-config --cflags SDL2_image` `pkg-config --cflags sdl2` `pkg-config --cflags SDL2_mixer`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/scene/MinesScene.o src/scene/MinesScene.cpp
 
 ${OBJECTDIR}/src/scene/menuscene.o: src/scene/menuscene.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/scene

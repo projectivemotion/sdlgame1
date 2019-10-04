@@ -13,7 +13,7 @@
 
 #include "scene.h"
 #include <stdio.h>
-#include "../../entities/player/bob.h"
+#include "entities/bob.h"
 #include "entities/projectiles.h"
 
 bool scene::init() {

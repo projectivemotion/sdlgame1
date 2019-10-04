@@ -14,22 +14,37 @@
 #ifndef MINESSTATE_H
 #define MINESSTATE_H
 
+#include <list>
+#include <iostream>
+
+struct cellstate {
+    int x;
+    int y;
+    int* value;    
+};
+
 class MinesState {
 public:
     MinesState();
     MinesState(const MinesState& orig);
     
     inline int* getcell(int x, int y);
+    
+    int* setmine(int x, int y);
+    int* inccell(int x, int y);
+    
     inline bool ismine(int c){
         return c == MINE;
     }
     
+    std::list<cellstate> getcells();
+    
+public:
     void init(int x, int y);    
-    void Easy();
+    void Easy();    
     
-    
-    int* inccell(int x, int y);    
-    int* setmine(int x, int y);
+    int getW();
+    int getH();
     
     void print();
     

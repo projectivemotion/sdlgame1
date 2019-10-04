@@ -15,24 +15,41 @@
 #define SDLMANAGER_H
 
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
+
 #include "FontSurface.h"
 #include "ChunkSound.h"
 #include <set>
 #include <memory>
+#include <map>
+
+enum assetid {
+    ASSET_DOTSIMG,
+    ASSETS_TOTAL
+};
+
+extern const char* assetlibj[];
+
+struct asset {
+    assetid id;
+    const char* path;
+};
 
 
 class AssetManager {
 public:
     AssetManager();
-    AssetManager(const AssetManager& orig);
+//    AssetManager(const AssetManager& orig);
     
-    SDL_Surface *open(SDL_Surface *sf);
+    std::shared_ptr<SDL_Surface> open(SDL_Surface *sfc);
+    std::shared_ptr<SDL_Surface> openid(assetid id);
     
     std::shared_ptr<FontSurface> getFont(const char*path, int size);
     std::shared_ptr<ChunkSound> getSound(const char*path);
     
     virtual ~AssetManager();
 private:
+    std::map<assetid, std::shared_ptr<SDL_Surface>> surf;
     std::set<void*> ptr;
     
 };

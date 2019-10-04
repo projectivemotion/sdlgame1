@@ -15,7 +15,7 @@
 #define SCENE_H
 #include "app/AppClass.h"
 #include "BaseScene.h"
-#include "../../entities/player/bob.h"
+#include "entities/bob.h"
 #include "entities/projectiles.h"
 
 class scene : public BaseScene {

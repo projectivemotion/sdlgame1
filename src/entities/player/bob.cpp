@@ -11,7 +11,7 @@
  * Created on September 17, 2019, 10:28 PM
  */
 
-#include "bob.h"
+#include "entities/bob.h"
 
 bob::bob(AppClass& app) {
     e = app.blue();
@@ -25,7 +25,7 @@ bob::~bob() {
     delete e;
 }
 
-entity* bob::getentity(){
+entity<SDL_Texture>* bob::getentity(){
     return e;
 }
 

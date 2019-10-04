@@ -13,38 +13,43 @@
 
 #include "entities/entity.h"
 
-entity::entity(){
-    
-}
+//entity::entity(){
+//    
+//}
+//template <class T>
+//entity::entity(T *texture) {
+//    x = texture;
+//}
 
-entity::entity(SDL_Texture *texture) {
-    x = texture;
-}
-
-void entity::free(){
+template <class T>
+void entity<T>::free(){
     if(x == NULL)
         return;
-    SDL_DestroyTexture(x);
+//    SDL_DestroyTexture(x);
     x = NULL;
 }
 
-entity& entity::move(int x, int y) {
+template <class T>
+entity<T>& entity<T>::move(int x, int y) {
     t.x = x;
     t.y = y;
     return *this;    
 }
 
-SDL_Rect& entity::getrect(){
-    return t;
-}
+//template <class T>
+//SDL_Rect& entity<T>::getrect(){
+//    return t;
+//}
 
-entity& entity::resize(int w, int h){
+template <class T>
+entity<T>& entity<T>::resize(int w, int h){
     t.w = w;
     t.h = h;
     return *this;    
 }
 
-entity* entity::from(int x, int y, int w, int h) {
+template <class T>
+entity<T>* entity<T>::from(int x, int y, int w, int h) {
     s.x = x;
     s.y = y;
     s.w = w;
@@ -57,14 +62,16 @@ entity* entity::from(int x, int y, int w, int h) {
     return this;
 }
 
-void entity::draw(SDL_Renderer *ren) {
-    SDL_RenderCopy(ren, x, &s, &t);
-//    return true;
+//void entity::draw(SDL_Renderer *ren) {
+//    SDL_RenderCopy(ren, x, &s, &t);
+////    return true;
+//}
+
+template <class T>
+entity<T>::~entity() {
 }
 
-entity::entity(const entity& orig) {
-}
 
-entity::~entity() {
-}
 
+ template class entity<SDL_Texture>;
+ template class entity<SDL_Surface>;

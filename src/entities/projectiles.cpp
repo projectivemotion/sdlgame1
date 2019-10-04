@@ -35,6 +35,6 @@ void projectiles::draw(AppClass& app) {
     }
 }
 
-void projectiles::fire(entity* e, SDL_Rect speed){
+void projectiles::fire(entity<SDL_Texture>* e, SDL_Rect speed){
     flying.push_front({e, speed});
 }

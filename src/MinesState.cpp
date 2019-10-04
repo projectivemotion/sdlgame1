@@ -84,6 +84,14 @@ int* MinesState::setmine(int x, int y){
     return cell;
 }
 
+int MinesState::getW(){
+    return w;
+}
+
+int MinesState::getH(){
+    return h;
+}
+
 void MinesState::Easy(){
     int minecount = ceil(w*h/10);
     
@@ -117,5 +125,16 @@ void MinesState::print(){
         }
         printf("\n");
     }
+}
+
+std::list<cellstate> MinesState::getcells(){
+    std::list<cellstate> l;
+    for(int i = 0; i < h; i++){
+        for(int j = 0; j < w; j++){
+            l.push_back({j, i, getcell(j, i)});
+        }
+    }
+    
+    return l;
 }
 

@@ -19,7 +19,7 @@
 #include <list>
 
 typedef struct {
-    entity* ball;
+    entity<SDL_Texture>* ball;
     SDL_Rect speed;
 } projectile;
 
@@ -28,7 +28,7 @@ public:
     projectiles();
     projectiles(const projectiles& orig);
     void draw(AppClass& app);
-    void fire(entity* e, SDL_Rect speed);
+    void fire(entity<SDL_Texture>* e, SDL_Rect speed);
     virtual ~projectiles();
 private:
     std::list<projectile> flying;

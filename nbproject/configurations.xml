@@ -14,10 +14,12 @@
       <itemPath>include/DrawableTexture.h</itemPath>
       <itemPath>include/FontSurface.h</itemPath>
       <itemPath>include/ManagedScene.h</itemPath>
+      <itemPath>include/drawable/MinesDrawable.h</itemPath>
+      <itemPath>include/MinesScene.h</itemPath>
       <itemPath>include/MinesState.h</itemPath>
       <itemPath>include/SceneManager.h</itemPath>
       <itemPath>include/SurfaceMaker.h</itemPath>
-      <itemPath>src/entities/player/bob.h</itemPath>
+      <itemPath>include/entities/bob.h</itemPath>
       <itemPath>include/drawable.h</itemPath>
       <itemPath>include/drawgroup.h</itemPath>
       <itemPath>include/entities/entity.h</itemPath>
@@ -25,7 +27,7 @@
       <itemPath>include/scene/menuscene.h</itemPath>
       <itemPath>include/painter.h</itemPath>
       <itemPath>include/entities/projectiles.h</itemPath>
-      <itemPath>src/scene/proofofconcept/scene.h</itemPath>
+      <itemPath>include/scene.h</itemPath>
       <itemPath>include/sceneslib.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
@@ -45,9 +47,12 @@
       <itemPath>src/DrawableTexture.cpp</itemPath>
       <itemPath>src/FontSurface.cpp</itemPath>
       <itemPath>src/ManagedScene.cpp</itemPath>
+      <itemPath>src/MinesDrawable.cpp</itemPath>
+      <itemPath>src/scene/MinesScene.cpp</itemPath>
       <itemPath>src/MinesState.cpp</itemPath>
       <itemPath>src/SceneManager.cpp</itemPath>
       <itemPath>src/SurfaceMaker.cpp</itemPath>
+      <itemPath>src/assetslib.cc</itemPath>
       <itemPath>src/entities/player/bob.cpp</itemPath>
       <itemPath>src/drawable.cpp</itemPath>
       <itemPath>include/drawgroup.cpp</itemPath>
@@ -110,6 +115,8 @@
       </item>
       <item path="include/ManagedScene.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="include/MinesScene.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="include/MinesState.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/SceneManager.h" ex="false" tool="3" flavor2="0">
@@ -120,9 +127,13 @@
       </item>
       <item path="include/drawable.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="include/drawable/MinesDrawable.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="include/drawgroup.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="include/drawgroup.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/entities/bob.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/entities/entity.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -131,6 +142,8 @@
       <item path="include/menuoptions.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/painter.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/scene.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/scene/BackgroundScene.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -152,6 +165,8 @@
       </item>
       <item path="src/ManagedScene.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="src/MinesDrawable.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="src/MinesState.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/SceneManager.cpp" ex="false" tool="1" flavor2="0">
@@ -160,13 +175,13 @@
       </item>
       <item path="src/app/AppClass.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="src/assetslib.cc" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="src/drawable.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/entities/entity.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/entities/player/bob.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/entities/player/bob.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/entities/projectiles.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -180,11 +195,11 @@
       </item>
       <item path="src/scene/BallScene.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="src/scene/MinesScene.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="src/scene/menuscene.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/scene/proofofconcept/scene.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/scene/proofofconcept/scene.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -237,6 +252,8 @@
       </item>
       <item path="include/ManagedScene.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="include/MinesScene.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="include/MinesState.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/SceneManager.h" ex="false" tool="3" flavor2="0">
@@ -247,9 +264,13 @@
       </item>
       <item path="include/drawable.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="include/drawable/MinesDrawable.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="include/drawgroup.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="include/drawgroup.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/entities/bob.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/entities/entity.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -258,6 +279,8 @@
       <item path="include/menuoptions.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/painter.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/scene.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/scene/BackgroundScene.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -279,6 +302,8 @@
       </item>
       <item path="src/ManagedScene.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="src/MinesDrawable.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="src/MinesState.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/SceneManager.cpp" ex="false" tool="1" flavor2="0">
@@ -287,13 +312,13 @@
       </item>
       <item path="src/app/AppClass.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="src/assetslib.cc" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="src/drawable.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/entities/entity.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/entities/player/bob.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/entities/player/bob.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/entities/projectiles.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -307,11 +332,11 @@
       </item>
       <item path="src/scene/BallScene.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="src/scene/MinesScene.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="src/scene/menuscene.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/scene/proofofconcept/scene.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/scene/proofofconcept/scene.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>

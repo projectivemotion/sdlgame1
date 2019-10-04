@@ -31,15 +31,17 @@ public:
     
     AssetManager& getAssetManager();
     SceneManager* getSceneManager();
+    SDL_Surface* loadSurfacex(const char* path);
     SDL_Texture* loadSurface(const char* path);
-    entity* createEntity(const char* path);
+    entity<SDL_Texture>* createEntity(const char* path);
     
-    entity* red();
-    entity* blue();
-    entity* yellow();
-    entity* green();
+//    entity<SDL_Surface>* reds();
+    entity<SDL_Texture>* red();
+    entity<SDL_Texture>* blue();
+    entity<SDL_Texture>* yellow();
+    entity<SDL_Texture>* green();
     
-    bool draw(entity& e);
+    bool draw(entity<SDL_Texture>& e);
     
     bool run();
     

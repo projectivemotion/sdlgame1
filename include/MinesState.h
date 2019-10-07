@@ -20,24 +20,30 @@
 struct cellstate {
     int x;
     int y;
-    int* value;    
+//    int* value;    
+    int value = 0;
+    int uncovered;
 };
 
 class MinesState {
 public:
     MinesState();
     MinesState(const MinesState& orig);
+//    void getcellstate(cellstate& state);
     
-    inline int* getcell(int x, int y);
+//    cellstate* setmine(int x, int y);
+    cellstate* setmine(cellstate *cell);
+//    int* inccell(int x, int y);
     
-    int* setmine(int x, int y);
-    int* inccell(int x, int y);
-    
-    inline bool ismine(int c){
-        return c == MINE;
+    inline bool ismine(cellstate* c){
+        return c->value == MINE;
     }
     
-    std::list<cellstate> getcells();
+    inline cellstate* getcell(int x, int y){        
+        return grid+y*w+x;
+    }
+    
+    std::list<cellstate*> getcells();
     
 public:
     void init(int x, int y);    
@@ -55,7 +61,8 @@ private:
     int w;
     int h;
     
-    int *grid = nullptr;
+//    int *grid = nullptr;
+    cellstate *grid = nullptr;
 };
 
 #endif /* MINESSTATE_H */

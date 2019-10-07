@@ -110,9 +110,10 @@ SDL_Texture * MinesDrawable::buildTexture(){
     );
     
     entity<SDL_Surface> *sprite;
-    for(const auto &cell : state->getcells())
+    for(auto *cell : state->getcells())
     {
-        int v = *cell.value;
+        int v = cell->value;
+//        int v = cell->value;
 //        sprite = &yellow;
         sprite = &shapes[v];
 //        if(state->ismine(*cell.value))
@@ -120,8 +121,9 @@ SDL_Texture * MinesDrawable::buildTexture(){
 //            sprite = &red;
 //        }
         
-        printf("Drawing v:%d %d %d %d %d\n", v, cell.x, cell.y, cw, ch);
-        sprite->move(cell.x*cw, cell.y*ch);
+//        printf("Drawing v:%d %d %d %d %d\n", v, cell.x, cell.y, cw, ch);
+        printf("Drawing v:%d %d %d %d %d\n", v, cell->x, cell->y, cw, ch);
+        sprite->move(cell->x*cw, cell->y*ch);
 
         SDL_BlitScaled(sprite->get(), sprite->getclip(), surfaceptr.get(), &sprite->getrect());
 //        SDL_BlitScaled(sprite->get(), nullptr, surfaceptr.get(), &sprite->t);

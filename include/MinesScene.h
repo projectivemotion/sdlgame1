@@ -16,18 +16,19 @@
 
 #include "ManagedScene.h"
 #include "MinesState.h"
+#include "drawable/MinesDrawable.h"
 
 
 class MinesScene : public ManagedScene {
 public:
     using ManagedScene::ManagedScene;
     
-//    MinesScene();
-//    MinesScene(const MinesScene& orig);
+    virtual bool handle_ev_mousedown(SDL_Event *e);
     virtual bool init();
     virtual ~MinesScene();
 private:
     MinesState state;
+    std::shared_ptr<MinesDrawable> mines;
 };
 
 #endif /* MINESSCENE_H */

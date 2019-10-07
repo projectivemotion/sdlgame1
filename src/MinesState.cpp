@@ -12,10 +12,11 @@
  */
 #include <stdio.h>
 #include <random>
+#include <array>
 #include "MinesState.h" 
 
 MinesState::MinesState() {
-    init(8,8);
+//    init(8,8);
 }
 
 MinesState::MinesState(const MinesState& orig) {
@@ -25,15 +26,6 @@ MinesState::~MinesState() {
     if(grid != nullptr)
         delete [] grid;
 }
-
-//inline cellstate* MinesState::getcell(int x, int y){
-//    return grid+y*w+x;
-//}
-    
-//cellstate* MinesState::inccell(int x, int y){
-//    return getcell(x,y);
-//}
-    
 void MinesState::init(int pw, int ph){
     w = pw;
     h = ph;
@@ -53,48 +45,46 @@ void MinesState::init(int pw, int ph){
             cell->x = z;
             cell->y = i;            
             cell->value = 0;
-            cell->uncovered = 0;
+            cell->covered = 1;
         }
-//        grid[i] = 0;
-    
     
 }
-//
-//int* MinesState::setmine(int* cell){    
-//        *cell = MINE;
-//    
-//}
     
-cellstate* MinesState::setmine(cellstate *cell){
-//    cellstate* cell = getcell(x,y);    
-        cell->value = MINE;
+cellstate* MinesState::setmine(cellstate *pcell){
+    pcell->value = MINE;
         
-    int baz[18] = {
-            -1, -1,
-            0, -1,
-            1, -1,
-            -1, 0,
-//            0, 0,
-            1, 0,
-            -1, 1,
-            0, 1,
-            1, 1,
-            0, 0    // end marker
-    };
-    
-    for(int *v = baz; *v != 0 || *(v+1) != 0;)
-    {
-        int cx = cell->x+*(v++);
-        int cy = cell->y+*(v++);
-        if(cx < 0 || cx >= w || cy < 0 || cy >= h) continue;
-        cellstate *cell = getcell(cx, cy);
+    for(auto *cell : getsurrounding(pcell)){
+        if(cell == nullptr)
+            continue;   // DOES NOT EXIST..
         if(ismine(cell)) continue;
         // 
         cell->value++;
-//        (*cell)++;
     }
+    
+//    int baz[18] = {
+//            -1, -1,
+//            0, -1,
+//            1, -1,
+//            -1, 0,
+////            0, 0,
+//            1, 0,
+//            -1, 1,
+//            0, 1,
+//            1, 1,
+//            0, 0    // end marker
+//    };
+//    
+//    for(int *v = baz; *v != 0 || *(v+1) != 0;)
+//    {
+//        int cx = pcell->x+*(v++);
+//        int cy = pcell->y+*(v++);
+//        if(cx < 0 || cx >= w || cy < 0 || cy >= h) continue;
+//        cellstate *cell = getcell(cx, cy);
+//        if(ismine(cell)) continue;
+//        cell->value++;
+//    }
         
-    return cell;
+    return pcell;
 }
 
 int MinesState::getW(){
@@ -104,14 +94,6 @@ int MinesState::getW(){
 int MinesState::getH(){
     return h;
 }
-
-//void MinesState::getcellstate(cellstate* state){
-//    int cell = state.value;
-//    int pos = state-grid;    // 0 = 0, 1 = 1, 2 = 2..etc
-    
-//    state->x = pos%w;
-//    state->y = floor(pos/w);
-//}
 
 void MinesState::Easy(){
     int minecount = ceil(w*h/10);
@@ -160,13 +142,47 @@ std::list<cellstate*> MinesState::getcells(){
     
     for(int p = 0; p < w*h; p++)
         l.push_back(grid+p);
-//    
-//    for(int i = 0; i < h; i++){
-//        for(int j = 0; j < w; j++){
-//            l.push_back({j, i, getcell(j, i), 0});
-//        }
-//    }
     
     return l;
 }
 
+std::array<cellstate*, 8> MinesState::getsurrounding(cellstate* pcell){
+    std::array<cellstate*, 8> l;
+
+    int baz[18] = {
+            -1, -1,
+            0, -1,
+            1, -1,
+            -1, 0,
+//            0, 0,
+            1, 0,
+            -1, 1,
+            0, 1,
+            1, 1,
+            0, 0    // end marker
+    };
+    
+    int p = 0;
+    for(int *v = baz; *v != 0 || *(v+1) != 0;)
+    {
+        int cx = pcell->x+*(v++);
+        int cy = pcell->y+*(v++);
+        if(cx < 0 || cx >= w || cy < 0 || cy >= h){
+            l[p++] = nullptr;
+            continue;
+        }
+        cellstate *cell = getcell(cx, cy);
+        l[p++] = cell;
+    }
+    
+    return l;
+}
+
+cellstate* MinesState::uncover(int x, int y){
+    cellstate* cell = getcell(x, y);
+    if(iscovered(cell))
+        cell->covered = 0;
+
+    return cell;
+//        return; // ok
+}

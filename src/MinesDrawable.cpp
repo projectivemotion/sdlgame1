@@ -30,8 +30,7 @@ void MinesDrawable::setState(MinesState *pstate)
 }
 
 MinesDrawable::~MinesDrawable() {
-    if(textx != nullptr)
-        SDL_DestroyTexture(textx);
+    clear();
 }
 
 bool MinesDrawable::init(){
@@ -40,8 +39,8 @@ bool MinesDrawable::init(){
     
     int w = 640;
     int h = 480;
-    int cw = floor(w/state->getW());
-    int ch = floor(h/state->getH());
+    cw = floor(w/state->getW());
+    ch = floor(h/state->getH());
     
     // init shapes map
     entity<SDL_Surface> red(dots);
@@ -52,6 +51,7 @@ bool MinesDrawable::init(){
         red.from(0, 0, 100, 100)->resize(cw, ch);
         green.from(100, 0, 100, 100)->resize(cw, ch);
 
+        shapes[state->COVERED] = green;
         shapes[state->MINE] = red;
         shapes[0] = yellow;
         shapes[1] = app->getAssetManager().write(green, 
@@ -93,12 +93,14 @@ SDL_Rect *MinesDrawable::getRect(){
 }
 
 SDL_Texture * MinesDrawable::getTexture(){
+    if(textx == nullptr)
+        return buildTexture();
+    
     return textx;
 }
 
 SDL_Texture * MinesDrawable::buildTexture(){
-    if(textx != nullptr)
-        SDL_DestroyTexture(textx);
+    clear();
     
     int w = 640;
     int h = 480;
@@ -112,16 +114,9 @@ SDL_Texture * MinesDrawable::buildTexture(){
     entity<SDL_Surface> *sprite;
     for(auto *cell : state->getcells())
     {
-        int v = cell->value;
 //        int v = cell->value;
-//        sprite = &yellow;
+        int v = state->getstate(cell);
         sprite = &shapes[v];
-//        if(state->ismine(*cell.value))
-//        {
-//            sprite = &red;
-//        }
-        
-//        printf("Drawing v:%d %d %d %d %d\n", v, cell.x, cell.y, cw, ch);
         printf("Drawing v:%d %d %d %d %d\n", v, cell->x, cell->y, cw, ch);
         sprite->move(cell->x*cw, cell->y*ch);
 

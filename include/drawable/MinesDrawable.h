@@ -19,30 +19,38 @@
 class MinesDrawable : public drawable {
 public:
     using drawable::drawable;
+    
+    inline void clear(){
+        if(textx == nullptr)
+            return;
+        
+        SDL_DestroyTexture(textx);
+        textx = nullptr;
+    }
 
     virtual SDL_Texture *getTexture();
-    virtual SDL_Rect *getRect();
-//    virtual SDL_Rect *clipRect();    
+    virtual SDL_Rect *getRect(); 
     virtual bool init();
-//    virtual bool draw();
     
     SDL_Texture *buildTexture();
     
 public:
+    
+    void getCWH(int& w, int&h){ w = cw; h = ch; }
+    
     void setState(MinesState *pstate);
     virtual ~MinesDrawable();
     
 private:
-    
-    std::map<int, entity<SDL_Surface>> shapes;
-    
     SDL_Texture* textx = nullptr;
-    
+    std::map<int, entity<SDL_Surface>> shapes;
     std::shared_ptr<SDL_Surface> dots;
     
     SDL_Rect rect;
     MinesState *state;
     
+    int cw;
+    int ch;
     int cellpos;
 };
 

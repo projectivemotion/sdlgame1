@@ -21,29 +21,37 @@ struct cellstate {
     int x;
     int y;
 //    int* value;    
-    int value = 0;
-    int uncovered;
+    int value;
+    int covered;
 };
 
 class MinesState {
 public:
     MinesState();
     MinesState(const MinesState& orig);
-//    void getcellstate(cellstate& state);
-    
-//    cellstate* setmine(int x, int y);
     cellstate* setmine(cellstate *cell);
-//    int* inccell(int x, int y);
     
     inline bool ismine(cellstate* c){
         return c->value == MINE;
+    }
+    inline bool iscovered(cellstate* c){
+        return c->covered == 1;
     }
     
     inline cellstate* getcell(int x, int y){        
         return grid+y*w+x;
     }
     
+    inline int getstate(cellstate* c){
+        if(iscovered(c))        
+                return COVERED;        
+        return c->value;
+    }
+    
+    cellstate* uncover(int x, int y);
+    
     std::list<cellstate*> getcells();
+    std::array<cellstate*, 8> getsurrounding(cellstate* center);
     
 public:
     void init(int x, int y);    
@@ -57,6 +65,7 @@ public:
     virtual ~MinesState();
     
     const int MINE = -1;
+    const int COVERED = -2;
 private:
     int w;
     int h;

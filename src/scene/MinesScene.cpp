@@ -19,11 +19,29 @@ MinesScene::~MinesScene() {
 }
 
 
+
+bool MinesScene::handle_ev_mousedown(SDL_Event* e){
+    int cw, ch;
+    mines->getCWH(cw, ch);
+    
+    int x = e->motion.x;
+    int y = e->motion.y;
+    printf("%d %x\n", x, y);
+    
+    int px = ceil(x/cw);
+    int py = ceil(y/ch);
+    
+    state.uncover(px, py);
+    mines->clear();
+    
+    return true;    
+}
+    
 bool MinesScene::init() {
 //    auto menu = std::make_shared<menuoptions>(app);
     state.init(20,20);
     state.Easy();
-    auto mines = std::make_shared<MinesDrawable>(app);
+    mines = std::make_shared<MinesDrawable>(app);
     mines->setState(&state);
     
 //    menu->setOptionHandler([this](void){

@@ -24,6 +24,7 @@ public:
     using ManagedScene::ManagedScene;
     
     virtual bool handle_ev_mousedown(SDL_Event *e);
+    virtual bool handle_ev_keydown(SDL_Event *e);
     virtual bool init();
     virtual ~MinesScene();
 private:

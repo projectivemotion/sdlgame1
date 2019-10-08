@@ -12,6 +12,7 @@
  */
 #include <stdio.h>
 #include <random>
+#include <algorithm>
 #include <array>
 #include "MinesState.h" 
 
@@ -36,18 +37,6 @@ void MinesState::init(int pw, int ph){
         int size = w*h;
         
     grid = new cellstate[size];
-    
-    cellstate* cell;
-    for(int i = 0; i < h; i++)
-        for(int z = 0; z < w ; z++)
-        {
-            cell = grid + i*w+z;
-            cell->x = z;
-            cell->y = i;            
-            cell->value = 0;
-            cell->covered = 1;
-        }
-    
 }
     
 cellstate* MinesState::setmine(cellstate *pcell){
@@ -74,36 +63,49 @@ int MinesState::getH(){
 void MinesState::Easy(){
     int minecount = ceil(w*h/10);
     
-    // Choose a random mean between 1 and 6
     std::random_device dev;
     std::default_random_engine e1(dev());
     
-//    std::uniform_int_distribution<int> rw(0,w-1);
-//    std::uniform_int_distribution<int> rh(0,h-1);
     std::uniform_int_distribution<int> celld(0,w*h-1);
     
     cellstate *cs;
+    
+    for(int i = 0; i < h; i++)
+        for(int z = 0; z < w ; z++)
+        {
+            cs = grid + i*w+z;
+            cs->x = z;
+            cs->y = i;            
+            cs->value = 0;
+            cs->covered = 1;
+//            cs->covered = 0;
+        }
+    
+    auto cells = getcells();
+    std::vector<cellstate*> v(cells.begin(), cells.end());
+    std::random_shuffle(v.begin(), v.end());
+    
     for(int i = 0; i < minecount; i++){
-        int rv = celld(e1);
-//        cs.value = grid + rv;
-        
-        cs = grid + rv;
-//        getcellstate(cs);
-        
-//        setmine(cs.x, cs.y);
+        cs = v[i];
         setmine(cs);
-        printf("%d : %d / %d %d\n", i, rv, cs->x, cs->y);
+        printf("mine: %d : position: %d | x: %d y: %d\n", i, cs->x, cs->y);
     }
     
     print();
 }
     
 void MinesState::print(){
+    
+    std::list<cellstate*> mines;
+//    int mines = 0;
     for(int i=0; i < h; i++){
         for(int j = 0; j < w; j++){
             cellstate* cell = getcell(j, i);
             if(ismine(cell))
+            {
+                mines.push_back(cell);
                 printf("x");
+            }
             else if(cell->value == 0)
                 printf("_");
             else
@@ -111,6 +113,13 @@ void MinesState::print(){
         }
         printf("\n");
     }
+    
+    printf("\n\nMines: %d\n", mines.size());
+    for(auto *m : mines)
+        printf("%d, %d\n", m->x, m->y);
+    
+    printf("\n\n");
+    
 }
 
 std::list<cellstate*> MinesState::getcells(){

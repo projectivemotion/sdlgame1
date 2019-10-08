@@ -65,10 +65,7 @@ bool MinesDrawable::init(){
         shapes[state->COVERED] = green;
         shapes[state->MINE] = red;
         shapes[0] = blue;
-//        shapes[1] = app->getAssetManager().write(yellow, 
-//                font->prender("1", {0,0,0,255}).get());
         shapes[1] = makecell("1");
-//        shapes[1] = font->render("1", {0,0,0,255});
         shapes[2] = makecell("2");
         shapes[3] = makecell("3");
         shapes[4] = makecell("4");
@@ -124,7 +121,7 @@ SDL_Texture * MinesDrawable::buildTexture(){
 //        int v = cell->value;
         int v = state->getstate(cell);
         sprite = &shapes[v];
-        printf("Drawing v:%d %d %d %d %d\n", v, cell->x, cell->y, cw, ch);
+//        printf("Drawing v:%d %d %d %d %d\n", v, cell->x, cell->y, cw, ch);
         sprite->move(cell->x*cw, cell->y*ch);
 
         SDL_BlitScaled(sprite->get(), sprite->getclip(), surfaceptr.get(), &sprite->getrect());

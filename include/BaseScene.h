@@ -26,6 +26,7 @@ public:
     virtual bool init();
     virtual bool handle_ev_mmotion(SDL_Event *e);
     virtual bool handle_ev_mousedown(SDL_Event *e);
+    virtual bool handle_ev_keydown(SDL_Event *e);
     virtual bool handle_ev_scene(SDL_Event *e);
     virtual bool loop();
     virtual bool draw();

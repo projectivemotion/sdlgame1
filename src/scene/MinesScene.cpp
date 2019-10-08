@@ -20,6 +20,12 @@ MinesScene::~MinesScene() {
 
 
 
+bool MinesScene::handle_ev_keydown(SDL_Event* e){
+    state.Easy();
+    mines->clear();
+    return true;
+}
+
 bool MinesScene::handle_ev_mousedown(SDL_Event* e){
     int cw, ch;
     mines->getCWH(cw, ch);
@@ -41,6 +47,7 @@ bool MinesScene::handle_ev_mousedown(SDL_Event* e){
 bool MinesScene::init() {
 //    auto menu = std::make_shared<menuoptions>(app);
     state.init(20,20);
+//    state.init(10,10);
     state.Easy();
     mines = std::make_shared<MinesDrawable>(app);
     mines->setState(&state);

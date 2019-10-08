@@ -36,6 +36,10 @@ bool BaseScene::handle_ev_scene(SDL_Event* e){
 bool BaseScene::handle_ev_mousedown(SDL_Event* e){
     return true;    
 }
+bool BaseScene::handle_ev_keydown(SDL_Event* e){
+    return true;    
+}
+
 bool BaseScene::handle_ev_mmotion(SDL_Event* e){
     return true;    
 }
@@ -57,6 +61,7 @@ bool BaseScene::loop(){
                         app->getSceneManager()->gotoScene(SCENE_MENU);
                         return false;
                     }
+                    quitscene = false == handle_ev_keydown(&e);
                     break;
                 case SDL_QUIT:
                     app->quit = true;

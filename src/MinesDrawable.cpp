@@ -55,8 +55,8 @@ bool MinesDrawable::init(){
         green.from(100, 0, 100, 100)->resize(100,100);    
         blue.from(100, 100, 100, 100)->resize(100,100);
         
-        auto makecell = [&am, yellow, font](const char *str){
-            auto t = font->prender(str, {0,0,0,255});
+        auto makecell = [&am, yellow, font](const char *str, const SDL_Color& tcolor){
+            auto t = font->prender(str, tcolor);
             entity<SDL_Surface> te = t; //(t.get());
             te.from(0,0,100,100)->move(20,0);
             return am.write(yellow, te);
@@ -65,14 +65,14 @@ bool MinesDrawable::init(){
         shapes[state->COVERED] = green;
         shapes[state->MINE] = red;
         shapes[0] = blue;
-        shapes[1] = makecell("1");
-        shapes[2] = makecell("2");
-        shapes[3] = makecell("3");
-        shapes[4] = makecell("4");
-        shapes[5] = makecell("5");
-        shapes[6] = makecell("6");
-        shapes[7] = makecell("7");
-        shapes[8] = makecell("8");
+        shapes[1] = makecell("1", {0,255,0,255});
+        shapes[2] = makecell("2", {0,128,0,255});
+        shapes[3] = makecell("3", {0,0,255,255});
+        shapes[4] = makecell("4", {0,0,128,255});
+        shapes[5] = makecell("5", {0,0,0,255});
+        shapes[6] = makecell("6", {0,0,0,255});
+        shapes[7] = makecell("7", {128,0,0,255});
+        shapes[8] = makecell("8", {255,0,0,255});
         
         for(auto &b : shapes)
         {

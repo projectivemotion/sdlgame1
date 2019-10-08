@@ -59,31 +59,7 @@ cellstate* MinesState::setmine(cellstate *pcell){
         if(ismine(cell)) continue;
         // 
         cell->value++;
-    }
-    
-//    int baz[18] = {
-//            -1, -1,
-//            0, -1,
-//            1, -1,
-//            -1, 0,
-////            0, 0,
-//            1, 0,
-//            -1, 1,
-//            0, 1,
-//            1, 1,
-//            0, 0    // end marker
-//    };
-//    
-//    for(int *v = baz; *v != 0 || *(v+1) != 0;)
-//    {
-//        int cx = pcell->x+*(v++);
-//        int cy = pcell->y+*(v++);
-//        if(cx < 0 || cx >= w || cy < 0 || cy >= h) continue;
-//        cellstate *cell = getcell(cx, cy);
-//        if(ismine(cell)) continue;
-//        cell->value++;
-//    }
-        
+    }        
     return pcell;
 }
 
@@ -178,11 +154,29 @@ std::array<cellstate*, 8> MinesState::getsurrounding(cellstate* pcell){
     return l;
 }
 
-cellstate* MinesState::uncover(int x, int y){
-    cellstate* cell = getcell(x, y);
+cellstate* MinesState::uncover(cellstate* cell){
+//    cellstate* cell = getcell(x, y);
     if(iscovered(cell))
         cell->covered = 0;
+    else{
+        return cell;    // nothing to do..?
+    }
 
+    if(issafe(cell)){
+        // uncover adjacent cells and numbers..
+//        std::list<cellstate*> expand;
+        
+//        do{
+            auto neighbors = getsurrounding(cell);
+//            expand.insert(expand.end(), neighbors.begin(), neighbors.end());
+            for(auto *n : neighbors){
+                if(n == nullptr)    continue;   // DNE
+                if(!ismine(n))
+                    uncover(n);
+            }
+//        }while(!expand.empty());
+    }
+    
     return cell;
 //        return; // ok
 }

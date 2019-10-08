@@ -31,7 +31,8 @@ bool MinesScene::handle_ev_mousedown(SDL_Event* e){
     int px = ceil(x/cw);
     int py = ceil(y/ch);
     
-    state.uncover(px, py);
+//    state.uncover(px, py);
+    state.uncover(state.getcell(px, py));
     mines->clear();
     
     return true;    

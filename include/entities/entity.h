@@ -37,10 +37,11 @@ public:
     virtual T *get(){
         return x.get();
     }
-    SDL_Rect &getrect(){
+    SDL_Rect &getrect() {
         return t;
     }
-    SDL_Rect *getclip(){
+    
+    SDL_Rect *getclip() {
         if(s.w == 0)
             return nullptr;
         return &s;

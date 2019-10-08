@@ -58,14 +58,29 @@ std::shared_ptr<FontSurface> AssetManager::openFont(assetid id, int size) {
     return f->second;
 }
 
-std::shared_ptr<SDL_Surface> AssetManager::write(entity<SDL_Surface> e, SDL_Surface *s) {
-    auto *r = &e.getrect();
-    auto* d=SDL_CreateRGBSurface(0, r->w, r->h, 32, 0, 0, 0, 0);
-    
-    SDL_FillRect(d, NULL, SDL_MapRGB(d->format, 255, 0, 0));
+//std::shared_ptr<SDL_Surface> AssetManager::write(entity<SDL_Surface> e, SDL_Surface *s) {
+//std::shared_ptr<SDL_Surface> AssetManager::write(entity<SDL_Surface> e, SDL_Surface *s) {
+//    auto *dr = &e.getrect();
+//    auto* d = SDL_CreateRGBSurface(0, dr->w, dr->h, 32, 0, 0, 0, 0);
+//    
+////    SDL_FillRect(d, NULL, SDL_MapRGB(d->format, 255, 0, 0));
+//
+//    SDL_BlitSurface(e.get(), e.getclip(), d, dr);
+//    SDL_BlitSurface(s, nullptr, d, nullptr);
+//    
+//    return open(d);
+//}
 
-//    SDL_BlitSurface(e.get(), nullptr, d, &r);    
-    SDL_BlitSurface(s, nullptr, d, nullptr);
+
+//std::shared_ptr<SDL_Surface> AssetManager::write(entity<SDL_Surface> e, SDL_Surface *s) {
+std::shared_ptr<SDL_Surface> AssetManager::write(entity<SDL_Surface> e, entity<SDL_Surface> tt) {
+    auto *dr = &e.getrect();
+    auto* d = SDL_CreateRGBSurface(0, dr->w, dr->h, 32, 0, 0, 0, 0);
+    
+//    SDL_FillRect(d, NULL, SDL_MapRGB(d->format, 255, 0, 0));
+
+    SDL_BlitSurface(e.get(), e.getclip(), d, dr);
+    SDL_BlitSurface(tt.get(), tt.getclip(), d, &tt.getrect());
     
     return open(d);
 }
@@ -73,7 +88,7 @@ std::shared_ptr<SDL_Surface> AssetManager::write(entity<SDL_Surface> e, SDL_Surf
 
 std::shared_ptr<SDL_Surface> AssetManager::open(SDL_Surface *sfc) {
     return std::shared_ptr<SDL_Surface>(sfc, [](auto p) {
-       std::cout << "Call delete from lambda...\n";
+       std::cout << "Call delete on Surface from lambda...\n";
 
        SDL_FreeSurface(p);
     }); 
@@ -81,7 +96,7 @@ std::shared_ptr<SDL_Surface> AssetManager::open(SDL_Surface *sfc) {
 
 std::shared_ptr<SDL_Texture> AssetManager::openT(SDL_Texture *txt) {
     return std::shared_ptr<SDL_Texture>(txt, [](auto p) {
-       std::cout << "Call delete from lambda...\n";
+       std::cout << "Call delete on Texture from lambda...\n";
 
        SDL_DestroyTexture(p);
     }); 

@@ -43,7 +43,8 @@ public:
     AssetManager();
 //    AssetManager(const AssetManager& orig);
     
-    std::shared_ptr<SDL_Surface> write(entity<SDL_Surface> e, SDL_Surface* t);
+//    std::shared_ptr<SDL_Surface> write(entity<SDL_Surface> e, SDL_Surface* t);
+    std::shared_ptr<SDL_Surface> write(entity<SDL_Surface> e, entity<SDL_Surface> tt);
     std::shared_ptr<SDL_Surface> open(SDL_Surface *sfc);
     std::shared_ptr<SDL_Texture> openT(SDL_Texture *sfc);
     std::shared_ptr<SDL_Surface> openid(assetid id);

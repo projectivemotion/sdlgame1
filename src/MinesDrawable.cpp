@@ -34,8 +34,10 @@ MinesDrawable::~MinesDrawable() {
 }
 
 bool MinesDrawable::init(){
-    dots = app->getAssetManager().openid(ASSET_DOTSIMG);
-    auto font = app->getAssetManager().openFont(ASSET_FONT, 20);
+    auto am = app->getAssetManager();
+    dots = am.openid(ASSET_DOTSIMG);
+    auto font = am.openFont(ASSET_FONT, 80);
+    
     
     int w = 640;
     int h = 480;
@@ -46,36 +48,41 @@ bool MinesDrawable::init(){
     entity<SDL_Surface> red(dots);
     entity<SDL_Surface> yellow(dots);
     entity<SDL_Surface> green(dots);
+    entity<SDL_Surface> blue(dots);
     
-        yellow.from(0, 100, 100, 100)->resize(cw, ch);
-        red.from(0, 0, 100, 100)->resize(cw, ch);
-        green.from(100, 0, 100, 100)->resize(cw, ch);
-
+        yellow.from(0, 100, 100, 100)->resize(100,100);
+        red.from(0, 0, 100, 100)->resize(100,100);
+        green.from(100, 0, 100, 100)->resize(100,100);    
+        blue.from(100, 100, 100, 100)->resize(100,100);
+        
+        auto makecell = [&am, yellow, font](const char *str){
+            auto t = font->prender(str, {0,0,0,255});
+            entity<SDL_Surface> te = t; //(t.get());
+            te.from(0,0,100,100)->move(20,0);
+            return am.write(yellow, te);
+        };
+        
         shapes[state->COVERED] = green;
         shapes[state->MINE] = red;
-        shapes[0] = yellow;
-        shapes[1] = app->getAssetManager().write(green, 
-                font->prender("1", {0,255,128,128}).get());
+        shapes[0] = blue;
+//        shapes[1] = app->getAssetManager().write(yellow, 
+//                font->prender("1", {0,0,0,255}).get());
+        shapes[1] = makecell("1");
 //        shapes[1] = font->render("1", {0,0,0,255});
-        shapes[2] = app->getAssetManager().write(green, 
-                font->prender("2", {0,255,128,128}).get());
-        shapes[3] = app->getAssetManager().write(green, 
-                font->prender("3", {0,255,128,128}).get());
-        shapes[4] = app->getAssetManager().write(green, 
-                font->prender("4", {0,255,128,128}).get());
-        shapes[5] = app->getAssetManager().write(green, 
-                font->prender("5", {0,255,128,128}).get());
-        shapes[6] = app->getAssetManager().write(green, 
-                font->prender("6", {0,255,128,128}).get());
-        shapes[7] = app->getAssetManager().write(green, 
-                font->prender("7", {0,255,128,128}).get());
-        shapes[8] = app->getAssetManager().write(green, 
-                font->prender("8", {0,255,128,128}).get());
+        shapes[2] = makecell("2");
+        shapes[3] = makecell("3");
+        shapes[4] = makecell("4");
+        shapes[5] = makecell("5");
+        shapes[6] = makecell("6");
+        shapes[7] = makecell("7");
+        shapes[8] = makecell("8");
         
         for(auto &b : shapes)
         {
-//            if(b.first > 1)
-                b.second.resize(cw, ch);
+            if(b.first > 1)
+                b.second.from(0,0,100,100);
+            
+            b.second.resize(cw, ch);
         }
     
     // end init shapes map

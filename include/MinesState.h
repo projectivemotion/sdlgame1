@@ -34,6 +34,10 @@ public:
     inline bool ismine(cellstate* c){
         return c->value == MINE;
     }
+    
+    inline bool issafe(cellstate* c){
+        return c->value == 0;
+    }
     inline bool iscovered(cellstate* c){
         return c->covered == 1;
     }
@@ -48,7 +52,7 @@ public:
         return c->value;
     }
     
-    cellstate* uncover(int x, int y);
+    cellstate* uncover(cellstate *cell);
     
     std::list<cellstate*> getcells();
     std::array<cellstate*, 8> getsurrounding(cellstate* center);

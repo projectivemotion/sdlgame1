@@ -12,12 +12,14 @@
       <itemPath>include/BounceBall.h</itemPath>
       <itemPath>include/ChunkSound.h</itemPath>
       <itemPath>include/DrawableTexture.h</itemPath>
+      <itemPath>include/EntityRenderer.h</itemPath>
       <itemPath>include/FontSurface.h</itemPath>
       <itemPath>include/ManagedScene.h</itemPath>
       <itemPath>include/drawable/MinesDrawable.h</itemPath>
       <itemPath>include/MinesScene.h</itemPath>
       <itemPath>include/MinesState.h</itemPath>
       <itemPath>include/SceneManager.h</itemPath>
+      <itemPath>include/SpriteScene.h</itemPath>
       <itemPath>include/SurfaceMaker.h</itemPath>
       <itemPath>include/entities/bob.h</itemPath>
       <itemPath>include/drawable.h</itemPath>
@@ -45,12 +47,14 @@
       <itemPath>src/BounceBall.cpp</itemPath>
       <itemPath>src/ChunkSound.cpp</itemPath>
       <itemPath>src/DrawableTexture.cpp</itemPath>
+      <itemPath>src/render/EntityRenderer.cpp</itemPath>
       <itemPath>src/FontSurface.cpp</itemPath>
       <itemPath>src/ManagedScene.cpp</itemPath>
       <itemPath>src/MinesDrawable.cpp</itemPath>
       <itemPath>src/scene/MinesScene.cpp</itemPath>
       <itemPath>src/MinesState.cpp</itemPath>
       <itemPath>src/SceneManager.cpp</itemPath>
+      <itemPath>src/scene/SpriteScene.cpp</itemPath>
       <itemPath>src/SurfaceMaker.cpp</itemPath>
       <itemPath>src/assetslib.cc</itemPath>
       <itemPath>src/entities/player/bob.cpp</itemPath>
@@ -114,6 +118,8 @@
       </item>
       <item path="include/DrawableTexture.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="include/EntityRenderer.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="include/FontSurface.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/ManagedScene.h" ex="false" tool="3" flavor2="0">
@@ -123,6 +129,8 @@
       <item path="include/MinesState.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/SceneManager.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/SpriteScene.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/SurfaceMaker.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -194,11 +202,15 @@
       </item>
       <item path="src/painter.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="src/render/EntityRenderer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="src/scene/BackgroundScene.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/scene/BallScene.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/scene/MinesScene.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/scene/SpriteScene.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/scene/menuscene.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -253,6 +265,8 @@
       </item>
       <item path="include/DrawableTexture.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="include/EntityRenderer.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="include/FontSurface.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/ManagedScene.h" ex="false" tool="3" flavor2="0">
@@ -262,6 +276,8 @@
       <item path="include/MinesState.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/SceneManager.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/SpriteScene.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/SurfaceMaker.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -333,11 +349,15 @@
       </item>
       <item path="src/painter.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="src/render/EntityRenderer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="src/scene/BackgroundScene.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/scene/BallScene.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/scene/MinesScene.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/scene/SpriteScene.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/scene/menuscene.cpp" ex="false" tool="1" flavor2="0">
       </item>

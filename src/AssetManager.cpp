@@ -13,6 +13,8 @@
 
 #include "AssetManager.h"
 #include "entities/entity.h"
+#include "app/AppClass.h"
+
 #include <iostream>
 
 AssetManager::AssetManager() {
@@ -26,24 +28,9 @@ std::shared_ptr<ChunkSound> AssetManager::getSound(const char* path) {
     return std::make_shared<ChunkSound>(path);
 }
 
-std::shared_ptr<SDL_Surface> AssetManager::openid(assetid id) {
-//    auto f = surf.find(id);
-//    if(f == surf.end()){
-        
+std::shared_ptr<SDL_Surface> AssetManager::openid(assetid id) {        
     return open(IMG_Load(assetlibj[id]));
-//        auto ptr = std::shared_ptr<SDL_Surface>(IMG_Load(assetlibj[id]), [](auto p) {
-//           std::cout << "Call delete from lambda...\n";
-//           
-//           SDL_FreeSurface(p);
-//        });
-     
-//        surf[id] = ptr;
-//        return ptr;
-//    }
-    
-//    return surf[id];
 }
-
 std::shared_ptr<FontSurface> AssetManager::openFont(assetid id, int size) {
     
     int ix = size*1000+id;
@@ -57,20 +44,6 @@ std::shared_ptr<FontSurface> AssetManager::openFont(assetid id, int size) {
     
     return f->second;
 }
-
-//std::shared_ptr<SDL_Surface> AssetManager::write(entity<SDL_Surface> e, SDL_Surface *s) {
-//std::shared_ptr<SDL_Surface> AssetManager::write(entity<SDL_Surface> e, SDL_Surface *s) {
-//    auto *dr = &e.getrect();
-//    auto* d = SDL_CreateRGBSurface(0, dr->w, dr->h, 32, 0, 0, 0, 0);
-//    
-////    SDL_FillRect(d, NULL, SDL_MapRGB(d->format, 255, 0, 0));
-//
-//    SDL_BlitSurface(e.get(), e.getclip(), d, dr);
-//    SDL_BlitSurface(s, nullptr, d, nullptr);
-//    
-//    return open(d);
-//}
-
 
 //std::shared_ptr<SDL_Surface> AssetManager::write(entity<SDL_Surface> e, SDL_Surface *s) {
 std::shared_ptr<SDL_Surface> AssetManager::write(entity<SDL_Surface> e, entity<SDL_Surface> tt) {
@@ -93,6 +66,22 @@ std::shared_ptr<SDL_Surface> AssetManager::open(SDL_Surface *sfc) {
        SDL_FreeSurface(p);
     }); 
 }
+
+
+entity<SDL_Surface> AssetManager::createSurfaceEntity(int w, int h) {        
+    return open(
+        SDL_CreateRGBSurface(0, w, h, 32, 0, 0, 0, 0)
+    );
+}
+
+entity<SDL_Texture> AssetManager::fromSurface(entity<SDL_Surface> &s, AppClass *app) {
+    return openT(
+            SDL_CreateTextureFromSurface(app->ren, s.get())
+//        SDL_CreateRGBSurface(0, w, h, 32, 0, 0, 0, 0)
+    );
+}
+
+//    entity<SDL_Texture> fromSurface(entity<SDL_Surface> &s);
 
 std::shared_ptr<SDL_Texture> AssetManager::openT(SDL_Texture *txt) {
     return std::shared_ptr<SDL_Texture>(txt, [](auto p) {

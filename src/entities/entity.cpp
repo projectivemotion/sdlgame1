@@ -26,7 +26,7 @@ void entity<T>::free(){
     if(x == NULL)
         return;
 //    SDL_DestroyTexture(x);
-    x = NULL;
+    x.reset();
 }
 
 template <class T>
@@ -36,10 +36,15 @@ entity<T>& entity<T>::move(int x, int y) {
     return *this;    
 }
 
-//template <class T>
-//SDL_Rect& entity<T>::getrect(){
-//    return t;
-//}
+template <class T>
+SDL_Texture* entity<T>::getTexture(){
+        return nullptr;
+}
+
+template <>
+SDL_Texture* entity<SDL_Texture>::getTexture(){
+    return get();
+}
 
 template <class T>
 entity<T>& entity<T>::resize(int w, int h){
@@ -66,6 +71,19 @@ entity<T>* entity<T>::from(int x, int y, int w, int h) {
 //    SDL_RenderCopy(ren, x, &s, &t);
 ////    return true;
 //}
+
+
+template <>
+void entity<SDL_Surface>::draw(entity<SDL_Surface> &sprite){
+    SDL_BlitScaled(sprite.get(),    // draw sprite
+                sprite.getclip(),   // from this rect
+                get(),              // to my surface
+                &sprite.getrect()   // on given pos/rect
+            );
+
+//    printf("Drawing herrr\n");
+        return;
+};
 
 template <class T>
 entity<T>::~entity() {

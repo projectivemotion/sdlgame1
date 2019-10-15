@@ -12,6 +12,7 @@
  */
 
 #include "BounceBall.h"
+#include "app/AppClass.h"
 
 BounceBall::BounceBall(AppClass *app) 
 : DrawableTexture(app, app->loadSurface("assets/dots.png"), {280,190, 100, 100})
@@ -29,7 +30,7 @@ SDL_Rect *BounceBall::clipRect()
     return &clip;
 }
 
-SDL_Rect *BounceBall::getRect()
+SDL_Rect *BounceBall::getrect()
 {
 //    SDL_GetMouseState( &rect.x, &rect.y);
     return &rect;

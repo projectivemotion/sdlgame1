@@ -13,6 +13,7 @@
 
 #include "menuoptions.h"
 #include "FontSurface.h"
+#include "app/AppClass.h"
 
 //typedef enum {
 //    OPT1,
@@ -36,7 +37,7 @@ void menuoptions::initOptions(){
     
     add(SCENE_BACKGROUND, "4 Balls", {0,0,255,128}, 100,100);
     add(SCENE_5BALLS, "5 Balls", {255, 255, 255, 255}, 100, 200);
-    add(SCENE_BACKGROUND, "Scene 3", {255, 0, 255, 255}, 100, 300);
+    add(SCENE_SPRITETEST, "Sprite Test", {255, 0, 255, 255}, 100, 300);
     add(SCENE_MINES, "Mines", {255, 0, 255, 255}, 100, 400);
 }
     
@@ -167,7 +168,7 @@ SDL_Texture *menuoptions::buildTexture(){
 
 
 
-SDL_Rect *menuoptions::getRect(){    
+SDL_Rect *menuoptions::getrect(){    
     return &rect;
 }
 

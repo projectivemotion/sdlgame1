@@ -28,7 +28,7 @@ bool BallScene::init() {
 //}
 bool BallScene::handle_ev_mmotion(SDL_Event* e){
     
-    auto *r = ballptr->getRect();
+    auto *r = ballptr->getrect();
     r->x = e->motion.x-50;
     r->y = e->motion.y-50;
 //    printf("%d %d", r->x, r->y);

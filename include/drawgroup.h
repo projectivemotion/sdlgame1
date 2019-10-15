@@ -18,12 +18,21 @@
 #include <memory>
 #include "drawable.h"
 #include "app/AppClass.h"
+#include "EntityRenderer.h"
 
 class drawgroup {
 public:
     drawgroup();
     drawgroup(const drawgroup& orig);
-    virtual drawable* add(std::shared_ptr<drawable> ptr);
+    drawable* add(std::shared_ptr<drawable> ptr);
+    
+    template <class T>
+    drawable* add(const entity<T>& e, AppClass *app){
+        drawables.push_back(std::make_shared<EntityRenderer<T>>(e, app));
+        return nullptr;
+    }
+
+//    drawable* add(entity<SDL_Texture> e, AppClass *app);
     virtual bool draw(AppClass *app);
     virtual ~drawgroup();
 private:

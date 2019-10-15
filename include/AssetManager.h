@@ -24,9 +24,12 @@
 #include <memory>
 #include <map>
 
+class AppClass;
+
 enum assetid {
     ASSET_DOTSIMG,
     ASSET_FONT,
+    ASSET_SPRITES,
     ASSETS_TOTAL
 };
 
@@ -46,6 +49,9 @@ public:
 //    std::shared_ptr<SDL_Surface> write(entity<SDL_Surface> e, SDL_Surface* t);
     std::shared_ptr<SDL_Surface> write(entity<SDL_Surface> e, entity<SDL_Surface> tt);
     std::shared_ptr<SDL_Surface> open(SDL_Surface *sfc);
+    entity<SDL_Surface> createSurfaceEntity(int w, int h);
+    entity<SDL_Texture> fromSurface(entity<SDL_Surface> &s, AppClass* app);
+    
     std::shared_ptr<SDL_Texture> openT(SDL_Texture *sfc);
     std::shared_ptr<SDL_Surface> openid(assetid id);
     std::shared_ptr<FontSurface> openFont(assetid id, int size);

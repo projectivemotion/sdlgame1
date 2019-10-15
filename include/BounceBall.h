@@ -20,7 +20,7 @@ class BounceBall : public DrawableTexture {
 public:
     BounceBall(AppClass *app);
     virtual SDL_Rect* clipRect();
-    virtual SDL_Rect *getRect();
+    virtual SDL_Rect *getrect();
     virtual ~BounceBall();
 private:
     SDL_Rect clip;

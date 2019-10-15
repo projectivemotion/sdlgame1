@@ -16,6 +16,7 @@
 #include "scene/BackgroundScene.h"
 #include "BallScene.h"
 #include "MinesScene.h"
+#include "SpriteScene.h"
 #include <memory>
 
 SceneManager::SceneManager() {
@@ -41,6 +42,8 @@ bool SceneManager::init(AppClass *app) {
     scenes[SCENE_MENU]->init();
     scenes[SCENE_BACKGROUND] = std::make_shared<BackgroundScene>(app);
     scenes[SCENE_BACKGROUND]->init();
+    scenes[SCENE_SPRITETEST] = std::make_shared<SpriteScene>(app);
+    scenes[SCENE_SPRITETEST]->init();
     scenes[SCENE_5BALLS] = std::make_shared<BallScene>(app);
     scenes[SCENE_5BALLS]->init();
     scenes[SCENE_MINES] = std::make_shared<MinesScene>(app);

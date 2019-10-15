@@ -36,6 +36,7 @@ MinesDrawable::~MinesDrawable() {
 bool MinesDrawable::init(){
     auto am = app->getAssetManager();
     dots = am.openid(ASSET_DOTSIMG);
+    auto sprites = am.openid(ASSET_SPRITES);
     auto font = am.openFont(ASSET_FONT, 80);
     
     
@@ -45,25 +46,37 @@ bool MinesDrawable::init(){
     ch = floor(h/state->getH());
     
     // init shapes map
+    
+    int spwh = 17;
+    
+    entity<SDL_Surface> tree(sprites, spwh, spwh, 21, 21);
+    entity<SDL_Surface> square(sprites, spwh, spwh, 21, 25);
     entity<SDL_Surface> red(dots);
     entity<SDL_Surface> yellow(dots);
     entity<SDL_Surface> green(dots);
     entity<SDL_Surface> blue(dots);
     
-        yellow.from(0, 100, 100, 100)->resize(100,100);
+//        yellow.from(0, 100, 100, 100)->resize(100,100);
+        yellow.from(0, 100, 100, 100);
         red.from(0, 0, 100, 100)->resize(100,100);
         green.from(100, 0, 100, 100)->resize(100,100);    
         blue.from(100, 100, 100, 100)->resize(100,100);
         
-        auto makecell = [&am, yellow, font](const char *str, const SDL_Color& tcolor){
+        auto makecell = [&am, yellow, font, this](const char *str, const SDL_Color& tcolor){
             auto t = font->prender(str, tcolor);
-            entity<SDL_Surface> te = t; //(t.get());
-            te.from(0,0,100,100)->move(20,0);
-            return am.write(yellow, te);
+            entity<SDL_Surface> te(t, 100, 100, 0, 0); //(t.get());
+//            te.from(0,0,100,100)->move(20,0);
+            te.move(20,0);
+            entity<SDL_Surface> e(am.write(yellow, te), 100, 100, 0, 0);
+            e.resize(cw, ch);
+            return e;
         };
         
-        shapes[state->COVERED] = green;
-        shapes[state->MINE] = red;
+//        square.resize(spwh*4, spwh*4);
+//        square.resize(8, 8);
+        
+        shapes[state->COVERED] = square;    //.resize(cw, ch);
+        shapes[state->MINE] = tree.resize(cw, ch);
         shapes[0] = blue;
         shapes[1] = makecell("1", {0,255,0,255});
         shapes[2] = makecell("2", {0,128,0,255});
@@ -74,14 +87,6 @@ bool MinesDrawable::init(){
         shapes[7] = makecell("7", {128,0,0,255});
         shapes[8] = makecell("8", {255,0,0,255});
         
-        for(auto &b : shapes)
-        {
-            if(b.first > 1)
-                b.second.from(0,0,100,100);
-            
-            b.second.resize(cw, ch);
-        }
-    
     // end init shapes map
     
     buildTexture();
@@ -92,15 +97,17 @@ bool MinesDrawable::init(){
     return true;
 }
 
-SDL_Rect *MinesDrawable::getRect(){
+SDL_Rect *MinesDrawable::getrect(){
     return &rect;
 }
 
 SDL_Texture * MinesDrawable::getTexture(){
-    if(textx == nullptr)
+//    if(textx == nullptr)
+        if(t.get() == nullptr)
         return buildTexture();
     
-    return textx;
+    return t.get();
+//    return textx;
 }
 
 SDL_Texture * MinesDrawable::buildTexture(){
@@ -111,9 +118,8 @@ SDL_Texture * MinesDrawable::buildTexture(){
     int cw = floor(w/state->getW());
     int ch = floor(h/state->getH());
     
-    auto surfaceptr = app->getAssetManager().open(
-        SDL_CreateRGBSurface(0, w, h, 32, 0, 0, 0, 0)
-    );
+    auto am = app->getAssetManager();
+    auto surfaceptr = am.createSurfaceEntity(w,h);
     
     entity<SDL_Surface> *sprite;
     for(auto *cell : state->getcells())
@@ -123,12 +129,13 @@ SDL_Texture * MinesDrawable::buildTexture(){
         sprite = &shapes[v];
 //        printf("Drawing v:%d %d %d %d %d\n", v, cell->x, cell->y, cw, ch);
         sprite->move(cell->x*cw, cell->y*ch);
+        
+        surfaceptr.draw(*sprite);
 
-        SDL_BlitScaled(sprite->get(), sprite->getclip(), surfaceptr.get(), &sprite->getrect());
-//        SDL_BlitScaled(sprite->get(), nullptr, surfaceptr.get(), &sprite->t);
     }
         
-    textx = SDL_CreateTextureFromSurface(app->ren, surfaceptr.get());
+    t = am.fromSurface(surfaceptr, app);
+//    textx = SDL_CreateTextureFromSurface(app->ren, surfaceptr.get());
     
-    return textx;    
+    return t.get();    
 }

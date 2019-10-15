@@ -23,38 +23,9 @@
 
 int main( int argc, char* args[] )
 {
-//    MinesState s;
-//    s.print();
-//    s.setmine(7,6);
-//    printf("\n\n");
-//    s.print();
-//    s.setmine(2,1);
-//    printf("\n\n");
-//    s.print();
-//    s.setmine(3,3);
-//    printf("\n\n");
-//    s.print();
-    
-//    MinesState s;
-//    s.print();
-//    s.setmine(1,1);
-//    printf("\n\n");
-//    s.print();
-//    s.setmine(2,1);
-//    printf("\n\n");
-//    s.print();
-//    s.setmine(3,3);
-//    printf("\n\n");
-//    s.print();
-    
-//    MinesState easy;
-//    printf("\n\n");
-//    easy.Easy();
-//    return 0;
     AppClass app;
     return app.run();
 #ifdef _JS
-
                         emscripten_set_main_loop_arg(loop_handler, NULL, -1, 1);
 #else
 			//While application is running

@@ -18,6 +18,9 @@
 #include "FontSurface.h"
 #include <SDL2/SDL_mixer.h>
 #include <algorithm>
+#include <list>
+#include "sceneslib.h"
+#include "ChunkSound.h"
 //#include <functional>
 
 struct opt {
@@ -33,7 +36,7 @@ public:
     using drawable::drawable;
     
     virtual bool init();
-    virtual SDL_Rect *getRect();
+    virtual SDL_Rect *getrect();
     virtual SDL_Texture *getTexture();
     
 public:

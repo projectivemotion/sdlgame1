@@ -16,20 +16,24 @@
 
 #include <SDL2/SDL_render.h>
 #include <memory>
+#include "drawable.h"
 
-template<class T>
+template<class T> 
 class entity {
 public:
     entity(){
     }
-    entity(std::shared_ptr<T> texture){
+    entity(const std::shared_ptr<T> &texture){
         x = texture;
         from(0,0,0,0);
     }
-//    entity(std::shared_ptr<T> p){
-//        
-//    }
-//    entity(const entity& orig);
+    entity(std::shared_ptr<T> texture, int w, int h, int px, int py){
+        x = texture;
+        from(w*px,h*py,w,h);
+    }
+    
+    entity(std::shared_ptr<T> texture, int w, int h) : entity(texture, w, h, 0, 0) {
+    }    
     
     virtual entity* from(int x, int y, int w, int h);
     virtual entity& move(int x, int y);
@@ -46,9 +50,13 @@ public:
             return nullptr;
         return &s;
     }
-//    virtual void draw(SDL_Renderer *ren);
-    virtual void free();
     
+    void draw(entity<SDL_Surface> &e){
+    }
+    
+    SDL_Texture* getTexture();
+    
+    virtual void free();    
     virtual ~entity();
     
 protected:
@@ -56,6 +64,8 @@ protected:
     SDL_Rect t;
     std::shared_ptr<T> x;
 };
+
+
 
 #endif /* ENTITY_H */
 

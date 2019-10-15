@@ -16,6 +16,7 @@
 
 #include <list>
 #include <iostream>
+#include <array>
 
 struct cellstate {
     int x;

@@ -15,7 +15,7 @@
 #define DRAWABLE_H
 
 #include <SDL2/SDL.h>
-#include "app/AppClass.h"
+class AppClass;
 
 class drawable {
 public:
@@ -24,10 +24,10 @@ public:
     
     virtual bool draw();
     virtual SDL_Texture *getTexture();
-    virtual SDL_Rect *getRect();
+    virtual SDL_Rect *getrect();
     virtual SDL_Rect *clipRect();
     
-    virtual bool init() = 0;
+    virtual bool init(){ return true;};
     virtual ~drawable();
 protected:
     AppClass *app;

@@ -15,21 +15,24 @@
 #define MINESDRAWABLE_H
 #include "drawable.h"
 #include "MinesState.h"
+#include "entities/entity.h"
+#include <map>
 
 class MinesDrawable : public drawable {
 public:
     using drawable::drawable;
     
     inline void clear(){
-        if(textx == nullptr)
-            return;
+//        if(textx == nullptr)
+//            return;
         
-        SDL_DestroyTexture(textx);
-        textx = nullptr;
+//        SDL_DestroyTexture(textx);
+//        textx = nullptr;
+        t.free();
     }
 
     virtual SDL_Texture *getTexture();
-    virtual SDL_Rect *getRect(); 
+    virtual SDL_Rect *getrect(); 
     virtual bool init();
     
     SDL_Texture *buildTexture();
@@ -42,7 +45,7 @@ public:
     virtual ~MinesDrawable();
     
 private:
-    SDL_Texture* textx = nullptr;
+    entity<SDL_Texture> t;
     std::map<int, entity<SDL_Surface>> shapes;
     std::shared_ptr<SDL_Surface> dots;
     

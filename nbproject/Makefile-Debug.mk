@@ -56,9 +56,11 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/main.o \
 	${OBJECTDIR}/src/menuoptions.o \
 	${OBJECTDIR}/src/painter.o \
+	${OBJECTDIR}/src/render/EntityRenderer.o \
 	${OBJECTDIR}/src/scene/BackgroundScene.o \
 	${OBJECTDIR}/src/scene/BallScene.o \
 	${OBJECTDIR}/src/scene/MinesScene.o \
+	${OBJECTDIR}/src/scene/SpriteScene.o \
 	${OBJECTDIR}/src/scene/menuscene.o \
 	${OBJECTDIR}/src/scene/proofofconcept/scene.o
 
@@ -192,6 +194,11 @@ ${OBJECTDIR}/src/painter.o: src/painter.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Iinclude/ `pkg-config --cflags SDL2_ttf` `pkg-config --cflags SDL2_image` `pkg-config --cflags sdl2` `pkg-config --cflags SDL2_mixer`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/painter.o src/painter.cpp
 
+${OBJECTDIR}/src/render/EntityRenderer.o: src/render/EntityRenderer.cpp
+	${MKDIR} -p ${OBJECTDIR}/src/render
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Iinclude/ `pkg-config --cflags SDL2_ttf` `pkg-config --cflags SDL2_image` `pkg-config --cflags sdl2` `pkg-config --cflags SDL2_mixer`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/render/EntityRenderer.o src/render/EntityRenderer.cpp
+
 ${OBJECTDIR}/src/scene/BackgroundScene.o: src/scene/BackgroundScene.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/scene
 	${RM} "$@.d"
@@ -206,6 +213,11 @@ ${OBJECTDIR}/src/scene/MinesScene.o: src/scene/MinesScene.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/scene
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Iinclude/ `pkg-config --cflags SDL2_ttf` `pkg-config --cflags SDL2_image` `pkg-config --cflags sdl2` `pkg-config --cflags SDL2_mixer`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/scene/MinesScene.o src/scene/MinesScene.cpp
+
+${OBJECTDIR}/src/scene/SpriteScene.o: src/scene/SpriteScene.cpp
+	${MKDIR} -p ${OBJECTDIR}/src/scene
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Iinclude/ `pkg-config --cflags SDL2_ttf` `pkg-config --cflags SDL2_image` `pkg-config --cflags sdl2` `pkg-config --cflags SDL2_mixer`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/scene/SpriteScene.o src/scene/SpriteScene.cpp
 
 ${OBJECTDIR}/src/scene/menuscene.o: src/scene/menuscene.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/scene

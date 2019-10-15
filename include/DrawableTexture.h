@@ -32,7 +32,7 @@ public:
         return texture;
     }
     
-    virtual SDL_Rect* getRect(){
+    virtual SDL_Rect* getrect(){
         return &rect;
     }
     

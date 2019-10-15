@@ -12,6 +12,7 @@
  */
 
 #include "drawable.h"
+#include "app/AppClass.h"
 
 drawable::drawable(AppClass *c) {
     app = c;
@@ -21,7 +22,7 @@ SDL_Texture *drawable::getTexture() {
     return nullptr;
 }
 
-SDL_Rect *drawable::getRect() {
+SDL_Rect *drawable::getrect() {
     return nullptr;
 }
 
@@ -30,7 +31,7 @@ SDL_Rect *drawable::clipRect() {
 }
 
 bool drawable::draw(){
-    SDL_RenderCopy(app->ren, getTexture(), clipRect(), getRect());
+    SDL_RenderCopy(app->ren, getTexture(), clipRect(), getrect());
     return true;
 }
 

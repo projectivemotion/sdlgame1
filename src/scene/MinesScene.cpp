@@ -18,8 +18,6 @@
 MinesScene::~MinesScene() {
 }
 
-
-
 bool MinesScene::handle_ev_keydown(SDL_Event* e){
     state.Easy();
     mines->clear();

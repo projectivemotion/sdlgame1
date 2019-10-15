@@ -12,6 +12,7 @@
  */
 
 #include "drawgroup.h"
+#include "EntityRenderer.h"
 
 drawgroup::drawgroup() {
 }
@@ -21,6 +22,12 @@ drawable* drawgroup::add(std::shared_ptr<drawable> ptr){
     drawables.push_back(ptr);
     return ptr.get();
 }
+//
+//template <class T>
+//drawable* drawgroup::add(entity<T>& e, AppClass *app){
+//    drawables.push_back(std::make_shared<EntityRenderer<T>>(e, app));
+//    return nullptr;
+//}
 
 bool drawgroup::draw(AppClass* app) {
     for(auto& it : drawables)
